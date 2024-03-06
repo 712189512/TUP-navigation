@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    padding-top: 70px; /* Add some padding to the top to prevent overlap */
+}
+
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+
+.search-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    padding: 10px 35%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Ensure the search box is above other content */
+}
+
+.search-box {
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.search-box input[type="text"] {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
+.search-box input[type="text"]::placeholder {
+    color: #6c757d;
+}
+
+.dropup .dropdown-toggle::after {
+    display: none;
+}
+
+.dropup .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 0.5rem;
+}

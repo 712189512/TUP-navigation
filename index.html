@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>\</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="script.js" async defer></script>
-    </body>
+<head>
+    <title>All code is AI generated</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- all styles go here -->
+</head>
+
+<body>
+    <div class="search-container">
+        <div class="container">
+            <div class="search-box">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <video id="video-background" autoplay loop muted></video>
+
+    <div class="dropup" style="position: absolute; bottom: 20px; left: 20px;">
+        <select class="form-control dropdown-toggle" id="video-selector">
+            <option value="assets\test-video.mp4" selected>Video 1</option>
+            <option value="assets\test-video-2.mp4" selected>Video 2</option>
+            <option value="assets\test-video-3.mp4" selected>Video 3</option>
+        </select>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js" async defer></script> <!-- all code go here -->
+
+    <!-- Include Font Awesome for the search icon -->
+    <script src="https://kit.fontawesome.com/e7ce56e99a.js" crossorigin="anonymous"></script>
+</body>
 </html>
