@@ -37,6 +37,20 @@
         </select>
     </div>
 
+<!-- Button to open the popup -->
+<button onclick="openPopup()">TUP PROGRAMS</button>
+
+<div id="myPopup" class="popup">    <!-- The popup -->
+        <div class="popup-content">  <!-- Popup content -->
+                 <span class="close" onclick="closePopup()">&times;</span><!-- Your code with an image goes here -->
+            <img src="assets/MIssion_Vision.jpg" alt="Your Image">
+            <img src="assets/Programs.jpg" alt="Your Image"> 
+            <img src="assets/Admmission Requirements.jpg" alt="Your Image">
+            <img src="assets/Graduate Program Offers.jpg" alt="Your Image">
+         </div>
+    </div>
+
+
     <!-- Include jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -44,7 +58,16 @@
 
     <!-- Include Font Awesome for the search icon -->
     <script src="https://kit.fontawesome.com/e7ce56e99a.js" crossorigin="anonymous"></script>
-
+    <script>
+        // Function to open the popup
+        function openPopup() {
+          document.getElementById("myPopup").style.display = "block";
+        }
+        // Function to close the popup
+        function closePopup() {
+          document.getElementById("myPopup").style.display = "none";
+        }
+      </script>
     <!-- branch fork testing -->
 </body>
 </html>
