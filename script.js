@@ -39,3 +39,42 @@ $(document).ready(function() {
     videoElement.load();
     resizeVideo();
 });
+
+function searchImage() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value.toLowerCase();
+    const imageContainer = document.getElementById('imageContainer');
+    imageContainer.innerHTML = ''; // Clear previous results
+
+    // Array of image filenames in your assets
+    const images = ['Programs.jpg', 'TUP FACADE.jpg', 'Admmision Requirements.jpg', 'Mission Vision.jpg', 'Graduate Programs Offers.jpg']; // Add your image filenames here
+
+    images.forEach(image => {
+        if (image.toLowerCase().includes(searchTerm)) {
+            const imgElement = document.createElement('img');
+            imgElement.src = 'assets/' + image; // Assuming your images are in a folder named 'assets'
+            imgElement.alt = image;
+            imgElement.onclick= function() {
+                openModal(imgElement.src);
+            };
+            imageContainer.appendChild(imgElement);
+        }
+    });
+
+    if (imageContainer.children.length === 0) {
+        imageContainer.innerHTML = 'Not found.';
+    }
+}
+
+function openModal(imageSrc) {
+    const modal = document.getElementById('myModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+}
+
+function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none';
+}
+

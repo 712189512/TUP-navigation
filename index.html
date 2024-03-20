@@ -7,20 +7,17 @@
     <link rel="stylesheet" href="styles.css"> <!-- all styles go here -->
 </head>
 
-<body>
-    <div class="search-container">
-        <div class="container">
-            <div class="search-box">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for an image...">
+    <button onclick="searchImage()">Search</button>
+ </div>
+     <div class="image-container" id="imageContainer">
+    <!-- Images will be displayed here -->
+    </div>
+    <!-- The modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <video id="video-background" autoplay loop muted></video>
@@ -36,21 +33,6 @@
             <option value="assets\test-video-3.mp4" selected>Video 7</option>
         </select>
     </div>
-
-<!-- Button to open the popup -->
-<button onclick="openPopup()">TUP PROGRAMS</button>
-
-<div id="myPopup" class="popup">    <!-- The popup -->
-        <div class="popup-content">  <!-- Popup content -->
-                 <span class="close" onclick="closePopup()">&times;</span><!-- Your code with an image goes here -->
-            <img src="assets/MIssion_Vision.jpg" alt="Your Image">
-            <img src="assets/Programs.jpg" alt="Your Image"> 
-            <img src="assets/Admmission Requirements.jpg" alt="Your Image">
-            <img src="assets/Graduate Program Offers.jpg" alt="Your Image">
-         </div>
-    </div>
-
-
     <!-- Include jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -58,16 +40,7 @@
 
     <!-- Include Font Awesome for the search icon -->
     <script src="https://kit.fontawesome.com/e7ce56e99a.js" crossorigin="anonymous"></script>
-    <script>
-        // Function to open the popup
-        function openPopup() {
-          document.getElementById("myPopup").style.display = "block";
-        }
-        // Function to close the popup
-        function closePopup() {
-          document.getElementById("myPopup").style.display = "none";
-        }
-      </script>
-    <!-- branch fork testing -->
+    <script src="script.js"></script>
+
 </body>
 </html>
