@@ -96,16 +96,17 @@ button:hover {
     height: 100%;
     background-color: rgba(0,0,0,0.9);
     overflow: auto;
-}
-
-.modal-content {
+  }
+  
+  .modal-content {
     margin: auto;
     display: block;
     max-width: 80%;
-    max-height: 200%;
-}
-
-.close {
+    max-height: 80%;  /* Adjust as needed for your content */
+    position: relative;  /* Needed for close button positioning */
+  }
+  
+  .close {
     color: white;
     position: absolute;
     top: 10px;
@@ -113,11 +114,27 @@ button:hover {
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: #999;
     text-decoration: none;
     cursor: pointer;
-}
+  }
+  
+  /* Media styling within the modal */
+  .modal-content img {
+    max-width: 100%;
+    max-height: 100%;  /* Adjust as needed for your images */
+    display: block;
+    margin: 0 auto;  /* Center the image horizontally */
+  }
+  
+  .modal-content video {
+    max-width: 100%;
+    max-height: 80%;  /* Adjust as needed for your videos */
+    display: block;
+    margin: 0 auto;
+  }
+  

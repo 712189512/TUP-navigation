@@ -40,41 +40,78 @@ $(document).ready(function() {
     resizeVideo();
 });
 
-function searchImage() {
+function searchMedia() {
     const searchInput = document.getElementById('searchInput');
     const searchTerm = searchInput.value.toLowerCase();
-    const imageContainer = document.getElementById('imageContainer');
-    imageContainer.innerHTML = ''; // Clear previous results
+    const mediaContainer = document.getElementById('imageContainer');
+    mediaContainer.innerHTML = ''; // Clear previous results
+  
+    // Array of media objects with type and URL properties
+    const media = [
+      { type: "image", url: "assets/Programs.jpg" },
+      { type: "image", url: "assets/TUP FACADE.jpg" },
+      { type: "image", url: "assets/Admmision Requirements.jpg" },
+      { type: "image", url: "assets/Mission Vision.jpg" },
+      { type: "image", url: "assets/Graduate Program Offers.jpg" },
+      { type: "video", url: "assets/test-video.mp4" },
 
-    // Array of image filenames in your assets
-    const images = ['Programs.jpg', 'TUP FACADE.jpg', 'Admmision Requirements.jpg', 'Mission Vision.jpg', 'Graduate Programs Offers.jpg']; // Add your image filenames here
-
-    images.forEach(image => {
-        if (image.toLowerCase().includes(searchTerm)) {
-            const imgElement = document.createElement('img');
-            imgElement.src = 'assets/' + image; // Assuming your images are in a folder named 'assets'
-            imgElement.alt = image;
-            imgElement.onclick= function() {
-                openModal(imgElement.src);
-            };
-            imageContainer.appendChild(imgElement);
+      // Add video objects with type: "video" and url properties here
+    ];
+  
+    media.forEach(mediaItem => {
+      if (mediaItem.url.toLowerCase().includes(searchTerm)) {
+        const mediaElement = mediaItem.type === "image" ? document.createElement('img') : document.createElement('video');
+        mediaElement.classList.add("media-item"); // Add a class for styling
+        if (mediaItem.type === "image") {
+          mediaElement.src = mediaItem.url;
+        } else {
+          mediaElement.controls = true; // Add controls for video playback
+          const sourceElement = document.createElement("source");
+          sourceElement.src = mediaItem.url;
+          mediaElement.appendChild(sourceElement);
         }
+        mediaElement.alt = mediaItem.type === "image" ? mediaItem.url : "Video";  // Set alt text
+  
+        mediaElement.onclick = function() {
+          openModal(mediaElement.src, mediaItem.type);
+        };
+        mediaContainer.appendChild(mediaElement);
+      }
     });
-
-    if (imageContainer.children.length === 0) {
-        imageContainer.innerHTML = 'Not found.';
+  
+    if (mediaContainer.children.length === 0) {
+      mediaContainer.innerHTML = 'Not found.';
     }
-}
-
-function openModal(imageSrc) {
+  }
+  function openModal(mediaSrc, mediaType) {
     const modal = document.getElementById('myModal');
-    const modalImg = document.getElementById('modalImage');
+    const modalContent = document.getElementById('modalContent');
     modal.style.display = 'block';
-    modalImg.src = imageSrc;
-}
+  
+    modalContent.innerHTML = ''; // Clear previous content
+  
+    if (mediaType === "image") {
+      const modalImg = document.createElement('img');
+      modalImg.src = mediaSrc;
+      modalContent.appendChild(modalImg);
+    } else {
+      const modalVideo = document.createElement('video');
+      modalVideo.setAttribute('autoplay', 'true');
+      modalVideo.muted = true ;  // Mute the video by default
+      const sourceElement = document.createElement("source");
+      sourceElement.src = mediaSrc;
+      modalVideo.appendChild(sourceElement);
+      modalContent.appendChild(modalVideo);
+      playButton.addEventListener('click', function() {
+        modalVideo.muted = false;  // Unmute the video on click
+        modalVideo.play();  // Play the video with sound
+      });
+    }
+  }
+  
 
-function closeModal() {
+  function closeModal() {
     const modal = document.getElementById('myModal');
     modal.style.display = 'none';
-}
-
+  }
+  

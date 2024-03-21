@@ -8,18 +8,82 @@
 </head>
 
 <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search for an image...">
-    <button onclick="searchImage()">Search</button>
- </div>
-     <div class="image-container" id="imageContainer">
-    <!-- Images will be displayed here -->
-    </div>
-    <!-- The modal -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
+    <input type="text" id="searchInput" placeholder="Search for images or videos...">
+    <button onclick="searchMedia()">Search</button>
+  </div>
+  
+  <div class="image-container" id="imageContainer">
+  </div>
+  
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="modalContent">
+      </div>
+  </div>
+  
+  <script>
+  function searchMedia() {
+    // Get the search term from the input field
+    const searchTerm = document.getElementById("searchInput").value;
+  
+    // Simulate image/video search (replace with your actual search logic)
+    // This is a placeholder, you'll need to implement your search functionality here
+    const searchResults = fetchSearchResults(searchTerm); // Replace with your search function
+  
+    // Check if the search returned any results
+    if (searchResults.length === 0) {
+      alert("No results found!");
+      return;
+    }
+  
+    const firstResult = searchResults[0];
+  
+    // Check if the first result is an image or video
+    if (firstResult.type === "image") {
+      const imageUrl = firstResult.url;
+      const imageElement = document.createElement("img");
+      imageElement.classList.add("modal-content");
+      imageElement.src = imageUrl;
+      document.getElementById("modalContent").appendChild(imageElement);
+    } else if (firstResult.type === "video") {
+      const videoUrl = firstResult.url;
+      const videoElement = document.createElement("video");
+      videoElement.classList.add("modal-content");
+      videoElement.controls = true; // Add controls to the video
+      const sourceElement = document.createElement("source");
+      sourceElement.src = videoUrl;
+      videoElement.appendChild(sourceElement);
+      document.getElementById("modalContent").appendChild(videoElement);
+    } else {
+      // Handle unsupported media type
+      console.error("Unsupported media type:", firstResult.type);
+      alert("Unsupported media type!");
+      return;
+    }
+  
+    // Display the modal
+    document.getElementById("myModal").style.display = "block";
+  }
+  
+  function closeModal() {
+    // Clear the modal content
+    document.getElementById("modalContent").innerHTML = "";
+  
+    // Hide the modal
+    document.getElementById("myModal").style.display = "none";
+  }
+  
+  // This function is a placeholder, you'll need to implement your actual search logic
+  function fetchSearchResults(searchTerm) {
+    // Replace this with your image/video search API call or logic
+    // It should return an array of objects with properties like:
+    //  - type: "image" or "video"
+    //  - url: The URL of the image or video
+    console.warn("Replace fetchSearchResults with your search logic");
+    return [];
+  }
+  </script>
+  
     <video id="video-background" autoplay loop muted></video>
 
     <div class="dropup" style="position: absolute; bottom: 20px; left: 20px;">
