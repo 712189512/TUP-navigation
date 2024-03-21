@@ -40,76 +40,87 @@ $(document).ready(function() {
     resizeVideo();
 });
 
-function searchMedia() {
+function searchImage() {
     const searchInput = document.getElementById('searchInput');
     const searchTerm = searchInput.value.toLowerCase();
-    const mediaContainer = document.getElementById('imageContainer');
-    mediaContainer.innerHTML = ''; // Clear previous results
+    const imageContainer = document.getElementById('imageContainer');
+    imageContainer.innerHTML = ''; // Clear previous results
   
-    // Array of media objects with type and URL properties
-    const media = [
-      { type: "image", url: "assets/Programs.jpg" },
-      { type: "image", url: "assets/TUP FACADE.jpg" },
-      { type: "image", url: "assets/Admmision Requirements.jpg" },
-      { type: "image", url: "assets/Mission Vision.jpg" },
-      { type: "image", url: "assets/Graduate Program Offers.jpg" },
-      { type: "video", url: "assets/test-video.mp4" },
-
-      // Add video objects with type: "video" and url properties here
-    ];
+    // Array of image filenames in your assets
+    const images = [
+      'Programs.jpg',
+      'TUP FACADE.jpg',
+      'Admmision Requirements.jpg',
+      'Mission Vision.jpg',
+      'Graduate Programs Offers.jpg'
+    ]; // Add your image filenames here
   
-    media.forEach(mediaItem => {
-      if (mediaItem.url.toLowerCase().includes(searchTerm)) {
-        const mediaElement = mediaItem.type === "image" ? document.createElement('img') : document.createElement('video');
-        mediaElement.classList.add("media-item"); // Add a class for styling
-        if (mediaItem.type === "image") {
-          mediaElement.src = mediaItem.url;
-        } else {
-          mediaElement.controls = true; // Add controls for video playback
-          const sourceElement = document.createElement("source");
-          sourceElement.src = mediaItem.url;
-          mediaElement.appendChild(sourceElement);
-        }
-        mediaElement.alt = mediaItem.type === "image" ? mediaItem.url : "Video";  // Set alt text
-  
-        mediaElement.onclick = function() {
-          openModal(mediaElement.src, mediaItem.type);
+    images.forEach(image => {
+      if (image.toLowerCase().includes(searchTerm)) {
+        const imgElement = document.createElement('img');
+        imgElement.src = 'assets/' + image; // Assuming your images are in a folder named 'assets'
+        imgElement.alt = image;
+        imgElement.onclick = function() {
+          openModal(imgElement.src);
         };
-        mediaContainer.appendChild(mediaElement);
+        imageContainer.appendChild(imgElement);
       }
     });
   
-    if (mediaContainer.children.length === 0) {
-      mediaContainer.innerHTML = 'Not found.';
+    if (imageContainer.children.length === 0) {
+      imageContainer.innerHTML = 'Not found.';
     }
   }
-  function openModal(mediaSrc, mediaType) {
+  
+  function searchVideo() {
+    const searchInput = document.getElementById('searchInput');
+    const searchTerm = searchInput.value.toLowerCase();
+    const videoContainer = document.getElementById('videoContainer'); // Assuming you have an element with this ID
+    videoContainer.innerHTML = ''; // Clear previous results
+  
+    // Array of video objects with properties like title and url
+    const videos = [
+      { title: 'Cafa', url: 'assets/test-video.mp4' },
+      { title: 'Campus Tour', url: 'path/to/tour.mp4' },
+      { title: 'Student Activities', url: 'path/to/activities.mp4' }
+    ]; // Add your videos here with title and url properties
+  
+    videos.forEach(video => {
+      if (video.title.toLowerCase().includes(searchTerm)) {
+        const videoElement = document.createElement('video');
+        videoElement.src = video.url;
+        videoElement.controls = true; // Add controls for play/pause etc.
+        videoElement.title = video.title;
+        videoContainer.appendChild(videoElement);
+      }
+    });
+  
+    if (videoContainer.children.length === 0) {
+      videoContainer.innerHTML = 'Not found.';
+    }
+  }
+  
+  function openModal(imageOrVideoSrc) {
     const modal = document.getElementById('myModal');
-    const modalContent = document.getElementById('modalContent');
-    modal.style.display = 'block';
+    const modalContent = document.getElementById('modalContent'); // Assuming you have an element with this ID for modal content
   
-    modalContent.innerHTML = ''; // Clear previous content
-  
-    if (mediaType === "image") {
+    // Handle both image and video sources
+    if (imageOrVideoSrc.endsWith('.jpg') || imageOrVideoSrc.endsWith('.png') || imageOrVideoSrc.endsWith('.gif')) {
       const modalImg = document.createElement('img');
-      modalImg.src = mediaSrc;
+      modalImg.src = imageOrVideoSrc;
+      modalContent.innerHTML = ''; // Clear previous content
       modalContent.appendChild(modalImg);
     } else {
       const modalVideo = document.createElement('video');
-      modalVideo.setAttribute('autoplay', 'true');
-      modalVideo.muted = true ;  // Mute the video by default
-      const sourceElement = document.createElement("source");
-      sourceElement.src = mediaSrc;
-      modalVideo.appendChild(sourceElement);
+      modalVideo.src = imageOrVideoSrc;
+      modalVideo.controls = true; // Add controls if needed
+      modalContent.innerHTML = ''; // Clear previous content
       modalContent.appendChild(modalVideo);
-      playButton.addEventListener('click', function() {
-        modalVideo.muted = false;  // Unmute the video on click
-        modalVideo.play();  // Play the video with sound
-      });
     }
+  
+    modal.style.display = 'block';
   }
   
-
   function closeModal() {
     const modal = document.getElementById('myModal');
     modal.style.display = 'none';
