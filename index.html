@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>All code is AI generated</title>
+    <title>TUP WALKTHROUGH</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css"> <!-- all styles go here -->
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
@@ -16,6 +16,7 @@
         <img src="assets/TUP FACADE.jpg" alt="facade">
     </div>
 
+    <!-- search modal -->
     <div class="search-container">
         <div class="container">
             <div class="search-box">
@@ -32,16 +33,16 @@
         </div>
     </div>
 
-    <!-- search modal -->
+    <!-- file modal -->
     <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                 </div>
-                <div class="file-modal-body">
+                <div class="file-modal-body" style="display: flex; justify-content: center; align-items: center;">
                     <!-- its INTENTIONALLY empty here -->
                 </div>
                 <div class="modal-footer">
@@ -52,11 +53,6 @@
     </div>
 
     <!-- autoplay is defined in code -->
-    <!-- <video id="video-background" loop></video> -->
-
-    <!-- autoplay bypass -->
-    <!-- <iframe src="https://olafwempe.com/mp3/silence/silence.mp3" type="audio/mp3" allow="autoplay" id="audio" style="display:none"></iframe> -->
-
     <div class="background-video" id="background-video">
         <video id="video-background" autoplay loop></video>
     </div>
@@ -64,14 +60,6 @@
     <div class="dropup" style="position: absolute; bottom: 20px; left: 20px;">
         <select class="form-control dropdown-toggle" id="video-selector">
             <!-- dropdown is now procedurally generated -->
-
-            <!-- <option value="assets\TUP INFO N HISTORY VIDEO.mp4" selected>Home</option>
-            <option value="assets\test-video-2.mp4" >Video 2</option>
-            <option value="assets\test-video-3.mp4" >Video 3</option>
-            <option value="assets\1-test-video-4.mp4" >Video 4</option> -->
-            <!-- <option value="assets\test-video-3.mp4" >Video 5</option>
-            <option value="assets\test-video-3.mp4" >Video 6</option>
-            <option value="assets\test-video-3.mp4" >Video 7</option> -->
         </select>
     </div>
 

@@ -112,6 +112,10 @@ button:hover {
 
 /* Your existing CSS styles */
 
+/* .modal-content {
+    width: fit-content;
+} */
+
 /* The modal styles */
 /* .modal {
     display: none;
@@ -125,12 +129,6 @@ button:hover {
     overflow: auto;
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 200%;
-}
 
 .close {
     color: white;

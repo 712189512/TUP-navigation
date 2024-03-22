@@ -80,13 +80,31 @@ const searchInput = document.getElementById('searchInput');
 const suggestionList = document.getElementById('suggestionList');
 const searchResults = document.getElementById('searchResults');
 
-// searchTerms
+// search terms for search box
 const searchTerms = [
   'Programs',
   'Admission Requirements',
   'Mission Vision', 
   'Graduate Program Offers',
+  'ENROLLMENT GUIDE',
+  'REGISTRAR',
+  'CAFA',
+  'CIE',
+  'CIT',
 ];
+
+// associated search paths
+const searchPaths = [
+  'assets\\Programs.jpg',
+  'assets\\Admission Requirements.jpg',
+  'assets\\Mission Vision.jpg', 
+  'assets\\Graduate Program Offers.jpg', 
+  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\REGISTRAR.mp4',
+  'assets\\CAFA.mp4',
+  'assets\\CIE.mp4',
+  'assets\\CIT.mp4',
+]
 
 const videoDropups = [
   'Information and History',
@@ -160,7 +178,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-var userClicked = false
 
 document.addEventListener('click', (event) => {
   if (!searchInput.contains(event.target)) {
@@ -168,6 +185,7 @@ document.addEventListener('click', (event) => {
   }
 });
 
+var userClicked = false
 function showSuggestionsAsResults() {
   searchResults.innerHTML = '';
   searchResults.style.display = 'block';
@@ -243,46 +261,68 @@ function sanitizeInput() {
 
 function openFileModal() {
   const selectedSearchTerm = searchInput.value;
+  const path = searchPaths[searchTerms.indexOf(selectedSearchTerm)]
   const modalBody = fileModal.querySelector('.file-modal-body');
+  var newElement;
 
   // Clear the modal body content
   modalBody.innerHTML = '';
 
+  // Create an video element and set its source
+  if (path.includes(".mp4")) {
+    newElement = document.createElement('video');
+    newElement.src = path;
+    newElement.controls = true
+    newElement.autoplay = true
+    newElement.style.maxWidth = '65%';
+    newElement.style.width = "fit-content";
+    newElement.style.margin = "3px";
+
+  }
   // Create an image element and set its source
-  const imageElement = document.createElement('img');
-  imageElement.src = `assets/${selectedSearchTerm}.jpg`;
-  imageElement.alt = selectedSearchTerm;
-  imageElement.style.maxWidth = '100%';
+  else if (path.includes(".jpg")) {
+    newElement = document.createElement('img');
+    newElement.src = path;
+    newElement.alt = selectedSearchTerm;
+    newElement.style.maxWidth = '100%';
+  }
+
 
   // Append the image element to the modal body
-  modalBody.appendChild(imageElement);
+  modalBody.appendChild(newElement);
 
   // Show the modal
   $('#fileModal').modal('show');
 
-  // changeSelectedOption(selectedSearchTerm);
+  // mute the background video when the modal is shown
+  var backMute = document.getElementById("video-background");
+  if (backMute) {
+    backMute.muted = true
+  }
+
+  // unmute when modal is hidden
+  $("#fileModal").on('hide.bs.modal', function(){
+    backMute.muted = false
+  });
+
+  // change dropdown
+  changeSelectedOption(selectedSearchTerm);
 }
 
+function changeSelectedOption(newValue) {
+  // Get the dropdown element
+  var dropChange = document.getElementById('video-selector');
 
-// ## TODO: change dropdown to video (REQUIRES VIDEOS TO BEGIN WITH)
-// Example usage:
-    // Change the selected option to "Video 3"
-    // changeSelectedOption("assets\\test-video-3.mp4");
-
-// function changeSelectedOption(newValue) {
-//   // Get the dropdown element
-//   var dropdown = document.getElementById("video-selector");
-
-//   // Loop through the options
-//   for (var i = 0; i < dropdown.options.length; i++) {
-//       // Check if the option value matches the new value
-//       if (dropdown.options[i].textContent === newValue) {
-//           // Set the option as selected
-//           dropdown.selectedIndex = i;
-//           break;
-//       }
-//   }
-// }
+  // Loop through the options
+  for (var i = 0; i < dropChange.options.length; i++) {
+      // Check if the option value matches the new value
+      if (dropChange.options[i].textContent === newValue) {
+          // Set the option as selected
+          dropChange.selectedIndex = i;
+          break;
+      }
+  }
+}
 
 
 
@@ -298,9 +338,10 @@ function openFileModal() {
 // coordinates for TUP locations
 const center = [14.58747,120.98445]
 const entrance = [14.587456148690714, 120.98400705626362]
-const cafa = [14.58805,120.98456]
+const cafa = [14.58786,120.98471]
 const cit = [14.58737,120.98491]
 const admin = [14.58658,120.98443]
+const cie = [14.58781,120.98434]
 
 // bounding box in case we somehow move the map (it shouldnt)
 const corner1 = L.latLng(14.58969,120.98683)
@@ -332,16 +373,19 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // markers for buildings
 var marker1 = L.marker(entrance)
         .addTo(map)
-        .bindPopup('<b>COS/CLA Building</b><br />College of Science and College of Liberal Arts building')
+        .bindPopup('<b>COS/CLA Building</b><br />College of Science and College of Liberal Arts')
 var marker2 = L.marker(cafa)
         .addTo(map)
-        .bindPopup('<b>CAFA Building</b><br />College of Fine Arts building')
+        .bindPopup('<b>CAFA Building</b><br />College of Fine Arts')
 var marker3 = L.marker(cit)
         .addTo(map)
-        .bindPopup('<b>CIT Building</b><br />College of Industrial Technology building')
+        .bindPopup('<b>CIT Building</b><br />College of Industrial Technology')
 var marker4 = L.marker(admin)
         .addTo(map)
-        .bindPopup('<b>Admin Building</b><br />Administration building')
+        .bindPopup('<b>Admin Building</b><br />Administration Offices')
+var marker5 = L.marker(cie)
+        .addTo(map)
+        .bindPopup('<b>CAFA Building</b><br />College of Industrial Education')
 
 // polygon is drawn by:
 //	1st array: shaded area
