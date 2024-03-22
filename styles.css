@@ -5,6 +5,34 @@ body {
     padding-top: 70px; /* Add some padding to the top to prevent overlap */
 }
 
+.fade-out-picture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Change the background color if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    z-index: 2;
+    margin: 4px;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  #fade-out-picture.animate {
+    animation: fadeOut 2s ease forwards; /* Adjust the animation duration as needed */
+  }
+  
 #video-background {
     position: fixed;
     right: 0;
@@ -17,13 +45,12 @@ body {
 }
 
 .search-container {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     background-color: transparent;
     padding: 10px 35%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 1; /* Ensure the search box is above other content */
 }
 
@@ -59,11 +86,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.search-container {
+/* .search-container {
     margin-bottom: 20px;
-}
+} */
 
-input[type="text"] {
+/* input[type="text"] {
     padding: 8px;
     width: 200px;
     border-radius: 5px;
@@ -81,12 +108,12 @@ button {
 
 button:hover {
     background-color: #0056b3;
-}
+} */
 
 /* Your existing CSS styles */
 
 /* The modal styles */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -120,4 +147,48 @@ button:hover {
     color: #999;
     text-decoration: none;
     cursor: pointer;
+} */
+
+.leaflet-container {
+    width: 600px;
+    height: 400px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#map-container {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.modal-dialog{
+    margin: auto;
+    max-width: none;  
+    width: fit-content;
+}
+
+
+
+.search-results {
+    margin-top: 10px;
+    background-color: transparent;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 1;
+    display: none;
+}
+  
+.search-results div {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+  
+.search-results div:hover {
+    background-color: #e9e9e9;
 }
