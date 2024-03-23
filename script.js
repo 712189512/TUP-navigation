@@ -32,12 +32,20 @@ $(document).ready(function() {
         resizeVideo();
     });
 
-    // Load the initial video
+    // Load the intro video then the looping video
     const initialVideo = videoSelector.value;
     const videoElement = document.getElementById('video-background');
-    videoElement.src = initialVideo;
+    videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
     videoElement.load();
     resizeVideo();
+    
+    const playNextVideo = () => {
+      videoElement.src = initialVideo;
+      videoElement.loop = true;
+      videoElement.load();
+      resizeVideo();
+    }
+    videoElement.addEventListener('ended', playNextVideo);
 });
 
 
@@ -259,6 +267,7 @@ function sanitizeInput() {
   }
 }
 
+var minimapAppend = null
 function openFileModal() {
   const selectedSearchTerm = searchInput.value;
   const path = searchPaths[searchTerms.indexOf(selectedSearchTerm)]
@@ -277,6 +286,8 @@ function openFileModal() {
     newElement.style.maxWidth = '65%';
     newElement.style.width = "fit-content";
     newElement.style.margin = "3px";
+    var minimapHandler = minimap(selectedSearchTerm);
+    minimapAppend = minimapHandler.miniMapContainer
 
   }
   // Create an image element and set its source
@@ -285,14 +296,20 @@ function openFileModal() {
     newElement.src = path;
     newElement.alt = selectedSearchTerm;
     newElement.style.maxWidth = '100%';
+    minimapAppend = null;
   }
 
 
-  // Append the image element to the modal body
+  // Append the new element to the modal body
   modalBody.appendChild(newElement);
+  if (minimapAppend) {
+    modalBody.appendChild(minimapAppend);
+  }
+
 
   // Show the modal
   $('#fileModal').modal('show');
+  minimapHandler.animateRoute();
 
   // mute the background video when the modal is shown
   var backMute = document.getElementById("video-background");
@@ -303,6 +320,12 @@ function openFileModal() {
   // unmute when modal is hidden
   $("#fileModal").on('hide.bs.modal', function(){
     backMute.muted = false
+    minimapAppend = null
+
+    miniMap.eachLayer(function (layer) {
+      miniMap.removeLayer(layer);
+   });
+
   });
 
   // change dropdown
@@ -329,15 +352,14 @@ function changeSelectedOption(newValue) {
 
 
 
-
-
-
-
+// common coordinates for navigation purposes
+const start = [14.587325072165925, 120.98375008034971]
+const entranceLeftStep = [14.58746394462632, 120.98392978835241]
 
 
 // coordinates for TUP locations
 const center = [14.58747,120.98445]
-const entrance = [14.587456148690714, 120.98400705626362]
+const entrance = [14.5874366892922, 120.9839083306817]
 const cafa = [14.58786,120.98471]
 const cit = [14.58737,120.98491]
 const admin = [14.58658,120.98443]
@@ -347,6 +369,21 @@ const cie = [14.58781,120.98434]
 const corner1 = L.latLng(14.58969,120.98683)
 const corner2 = L.latLng(14.58578,120.98245)
 const bounds = L.latLngBounds(corner1, corner2)
+
+// CIE-specific navigation
+// -start
+// -entrance
+// -leftstep
+const CIEnode1 = [14.587297816814845, 120.98416314053932]
+const CIEnode2 = [14.58758,120.98437]
+const CIEnode3 = [14.587826050847909, 120.98439381058128]
+const CIEpoly = L.polygon([
+    [14.587658625506519, 120.98436430621317],
+    [14.587814370078304, 120.98412693071268],
+    [14.588160901355186, 120.98436967063125],
+    [14.588031114424, 120.98457083630964],
+    [14.58787796574675, 120.98453864980107],
+], {color: 'blue', interactive: false})
 
 
 // define map and turn of all zoom and movement settings
@@ -362,7 +399,9 @@ const map = L.map('map', {
   maxBounds: bounds,
   zoomSnap: 0.1,
 })
-  .setView(center, 17.5)
+.setView(center, 17.5)
+
+
 
 // map tile and mandatory attribution
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -373,7 +412,7 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // markers for buildings
 var marker1 = L.marker(entrance)
         .addTo(map)
-        .bindPopup('<b>COS/CLA Building</b><br />College of Science and College of Liberal Arts')
+        .bindPopup('<b>COS/CLA Building</b><br />Main Entrance')
 var marker2 = L.marker(cafa)
         .addTo(map)
         .bindPopup('<b>CAFA Building</b><br />College of Fine Arts')
@@ -414,13 +453,162 @@ var polygon = L.polygon([
 }).addTo(map);
 
 // draw line
-var lineLatLngs = [cafa,admin]
-var polyline = L.polyline(lineLatLngs, {color: 'green', interactive: false}).addTo(map)
+// var lineLatLngs = [cafa,admin]
+// var polyline = L.polyline(lineLatLngs, {color: 'green', interactive: false}).addTo(map)
+
+// Create a new map container for the minimap
+var miniMapContainer = L.DomUtil.create('div', 'minimap-container');
+miniMapContainer.id = "minimapModal"
+
+// Initialize the minimap
+// function initializeMinimap() {
+//   return L.map(miniMapContainer, {
+//     zoom: 18, // Set the initial zoom level
+//     center: center,
+//     zoomControl: false, // Disable the zoom control
+//     attributionControl: false, // Hide the attribution control
+//     dragging: false, // Disable dragging
+//     doubleClickZoom: false, // Disable double-click zoom
+//     scrollWheelZoom: false, // Disable scroll wheel zoom
+//     boxZoom: false, // Disable box zoom
+//     keyboard: false, // Disable keyboard navigation
+//     zoomSnap: 0.25 // Set the zoom snap level
+//   });
+// }
+
+var miniMap = L.map(miniMapContainer, {
+  zoom: 18, // Set the initial zoom level
+  center: center,
+  zoomControl: false, // Disable the zoom control
+  attributionControl: false, // Hide the attribution control
+  dragging: false, // Disable dragging
+  doubleClickZoom: false, // Disable double-click zoom
+  scrollWheelZoom: false, // Disable scroll wheel zoom
+  boxZoom: false, // Disable box zoom
+  keyboard: false, // Disable keyboard navigation
+  zoomSnap: 0.25 // Set the zoom snap level
+});
+
+var interval = []
+function minimap(destination) {
+    if (destination === 'CIE') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          CIEnode2,
+          CIEnode3,
+        ],
+        [
+          CIEpoly
+        ]
+      ]
+
+      interval = [2500, 3833, 8708, 13000]
+    }
+    return createMiniMap(package)
+}
+  
+
+  
+function createMiniMap(data) {
+  var points = data[0]
+  var other = data[1]
+  // console.log(data)
+  var line = L.polyline(points, {color: 'green', interactive: false}).addTo(miniMap)
+  // miniMap.panTo(points[0])
+
+  // var animatedMarker = L.animatedMarker(line.getLatLngs());
+
+  // miniMap.addLayer(animatedMarker)
+
+//   let myMarkerPlayer = L.markerPlayer([
+//       {
+//           latlng: [48.8567, 2.3508]
+//       },
+//       {
+//           latlng: [48.8567, 2.3508]
+//       }
+//   ], 30000).addTo(map);
+// //...
+// myMarkerPlayer.start();
+
+
+  other.forEach(func => func.addTo(miniMap))
+
+
+  // Add a tile layer to the minimap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(miniMap);
+
+  
+  // Create a marker for the current position
+  var currentPositionMarker = L.marker(points[0]).addTo(miniMap);
+
+  // Function to update the position of the marker on the minimap
+  function updateMiniMapMarker(latlng) {
+      currentPositionMarker.setLatLng(latlng);
+      miniMap.panTo(latlng);
+  }
+
+  // Function to animate the route
+  function animateRoute() {
+      var currentPoint = 0;
+      var interval = setInterval(function() {
+          if (currentPoint < points.length) {
+              updateMiniMapMarker(points[currentPoint]);
+              currentPoint++;
+          } else {
+              clearInterval(interval);
+          }
+      }, 500); // Adjust the delay (in milliseconds) between points
+  }
+
+  
+  // Update the position of the marker on the minimap during route animation
+  miniMap.on('moveend', function () {
+        updateMiniMapMarker(miniMap.getCenter());
+    });
+    
+    // function animateRoute() {
+    //   console.log("Hello world")
+    // }
+
+  // Style the minimap container
+  var miniMapStyle = document.createElement('style');
+  miniMapStyle.innerHTML = `
+      .minimap-container {
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          width: 200px;
+          height: 150px;
+          border: 1px solid #ccc;
+          z-index: 999;
+      }
+  `;
+  document.head.appendChild(miniMapStyle);
+
+  return { miniMapContainer, animateRoute };
+}
+
+
 
 // resize map to fit inside popup modal
 $('#mapModal').on('shown.bs.modal', function(){
   setTimeout(function() {
     map.invalidateSize();
   }, 1);
-  });
+});
+
+// resize minimap to fit inside popup
+$('#fileModal').on('shown.bs.modal', function(){
+  setTimeout(function() {
+    miniMap.invalidateSize();
+  }, 1);
+});
+
   
