@@ -36,7 +36,7 @@ $(document).ready(function() {
     const initialVideo = videoSelector.value;
     const videoElement = document.getElementById('video-background');
     // videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
-    videoElement.src = "https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
+    videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
     videoElement.type = "video/mp4"
     videoElement.load();
     resizeVideo();
@@ -131,22 +131,22 @@ const searchTerms = [
 // ]
 
 const searchPaths = [
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/Programs.jpg',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/Admission%20Requirements.jpg',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/Mission%20Vision.jpg', 
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/Graduate%20Program%20Offers.jpg', 
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/REGISTRAR.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CASHIER.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CAFA.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CIE.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CIT.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/COS.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CLA.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/COE.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CHAPEL.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/GRAD%20OFFICE.mp4',
+  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Programs.jpg',
+  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Admission%20Requirements.jpg',
+  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Mission%20Vision.jpg', 
+  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Graduate%20Program%20Offers.jpg', 
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
 ]
 const videoDropups = [
   'Information and History',
@@ -162,36 +162,35 @@ const videoDropups = [
   'CHAPEL',
   'GRAD OFFICE',
 ]
-
 // const videoPaths = [
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/TUP%20INFO%20N%20HISTORY%20VIDEO-EDITED.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/REGISTRAR.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CASHIER.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CAFA.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CIE.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CIT.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/COS.mp4',
-//   'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CLA.mp4',
+//   'assets\TUP INFO N HISTORY VIDEO-EDITED.mp4'
+//   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+//   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
+//   'assets\\REGISTRAR.mp4',
+//   'assets\\CASHIER.mp4',
+//   'assets\\CAFA.mp4',
+//   'assets\\CIE.mp4',
+//   'assets\\CIT.mp4',
+//   'assets\\COS.mp4',
+//   'assets\\CLA.mp4',
 //   'assets\\COE.mp4',
 //   'assets\\CHAPEL.mp4',
 //   'assets\\GRAD OFFICE.mp4',
 // ]
 const videoPaths = [
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/TUP%20INFO%20N%20HISTORY%20VIDEO-EDITED.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/REGISTRAR.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CASHIER.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CAFA.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CIE.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CIT.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/COS.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CLA.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/COE.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/CHAPEL.mp4',
-  'https://github.com/712189512/TUP-navigation/blob/2ba5cef8ca6aea1d9f3b9e2b08b0e0036f95b93b/assets/GRAD%20OFFICE.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/TUP%20INFO%20N%20HISTORY%20VIDEO-EDITED.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
 ]
 
 function generateDropdown(namesArray) {
