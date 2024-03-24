@@ -94,11 +94,18 @@ const searchTerms = [
   'Admission Requirements',
   'Mission Vision', 
   'Graduate Program Offers',
-  'ENROLLMENT GUIDE',
+  'ENROLLMENT TOUR GUIDE FOR FRESHMEN',
+  'ENROLLMENT TOUR GUIDE FOR MASTERAL',
   'REGISTRAR',
+  'CASHIER',
   'CAFA',
   'CIE',
   'CIT',
+  'COS',
+  'CLA',
+  'COE',
+  'CHAPEL',
+  'GRAD OFFICE',
 ];
 
 // associated search paths
@@ -108,48 +115,48 @@ const searchPaths = [
   'assets\\Mission Vision.jpg', 
   'assets\\Graduate Program Offers.jpg', 
   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
   'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
   'assets\\CAFA.mp4',
   'assets\\CIE.mp4',
   'assets\\CIT.mp4',
+  'assets\\COS.mp4',
+  'assets\\CLA.mp4',
+  'assets\\COE.mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
 ]
 
 const videoDropups = [
   'Information and History',
-  'ENROLLMENT GUIDE',
+  'ENROLLMENT TOUR GUIDE FOR FRESHMEN',
+  'ENROLLMENT TOUR GUIDE FOR MASTERAL',
   'REGISTRAR',
   'CAFA',
   'CIE',
   'CIT',
+  'COS',
+  'CLA',
+  'COE',
+  'CHAPEL',
+  'GRAD OFFICE',
 ]
 
-// files that the user cannot access through search and is also not a part of the main files list
-const inaccessibleFiles = [
-  'TUP FACADE.jpg',
-]
-
-// filenames (to be matched with their respective search terms using their index)
-const files = [
-  'assets\\Programs.jpg',
-  'assets\\Admission Requirements.jpg',
-  'assets\\Mission Vision.jpg', 
-  'assets\\Graduate Program Offers.jpg', 
-  'assets\\TUP INFO N HISTORY VIDEO-EDITED.mp4',
-  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
-  'assets\\REGISTRAR.mp4',
-  'assets\\CAFA.mp4',
-  'assets\\CIE.mp4',
-  'assets\\CIT.mp4',
-]
-
-// starts at index 4 of the files array for matching purposes
 const videoPaths = [
   'assets\\TUP INFO N HISTORY VIDEO-EDITED.mp4',
   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
   'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
   'assets\\CAFA.mp4',
   'assets\\CIE.mp4',
   'assets\\CIT.mp4',
+  'assets\\COS.mp4',
+  'assets\\CLA.mp4',
+  'assets\\COE.mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
 ]
 
 function generateDropdown(namesArray) {
@@ -309,7 +316,11 @@ function openFileModal() {
 
   // Show the modal
   $('#fileModal').modal('show');
-  minimapHandler.animateRoute();
+
+  // if modal has a minimap, play the navigation
+  if (minimapAppend) {
+    minimapHandler.animateRoute();
+  }
 
   // mute the background video when the modal is shown
   var backMute = document.getElementById("video-background");
@@ -322,9 +333,22 @@ function openFileModal() {
     backMute.muted = false
     minimapAppend = null
 
+    // remove everything from minimap
     miniMap.eachLayer(function (layer) {
-      miniMap.removeLayer(layer);
-   });
+        miniMap.removeLayer(layer);
+    });
+
+    // remove minimap modal
+    var forRemoval = document.getElementById("minimapModal")
+    if (forRemoval) {
+      forRemoval.remove()
+    }
+
+    miniMap.remove()
+    miniMap = initializeMinimap()
+    // miniMapContainer = null
+    // miniMapContainer = newMiniMapContainer()
+
 
   });
 
@@ -349,13 +373,9 @@ function changeSelectedOption(newValue) {
 
 
 
-
-
-
 // common coordinates for navigation purposes
 const start = [14.587325072165925, 120.98375008034971]
 const entranceLeftStep = [14.58746394462632, 120.98392978835241]
-
 
 // coordinates for TUP locations
 const center = [14.58747,120.98445]
@@ -364,6 +384,11 @@ const cafa = [14.58786,120.98471]
 const cit = [14.58737,120.98491]
 const admin = [14.58658,120.98443]
 const cie = [14.58781,120.98434]
+const cos = [14.58716,120.98385]
+const cla = [14.58756,120.98413]
+const coe = [14.58635,120.98423]
+const chapel = [14.58770,120.98445]
+const gradoffice = [14.58669,120.98395]
 
 // bounding box in case we somehow move the map (it shouldnt)
 const corner1 = L.latLng(14.58969,120.98683)
@@ -385,6 +410,155 @@ const CIEpoly = L.polygon([
     [14.58787796574675, 120.98453864980107],
 ], {color: 'blue', interactive: false})
 
+// COS-specific navigation
+// start
+// entrance
+// leftstep
+// CIEnode1
+const COSnode1 = [14.587151254044747, 120.98408246404587]
+const COSCLApoly = L.polygon([
+  [14.58778,120.98413],
+  [14.58764,120.98435],
+  [14.58689,120.98380],
+  [14.58703,120.98360]
+], {color: 'blue', interactive: false})
+
+// CAFA-specific navigation
+// start
+// entrance
+// leftstep
+// CIEnode1
+// CIEnode2
+const CAFAnode1 = [14.58771771706005, 120.98472671117692]
+const CAFApoly = L.polygon([
+  [14.587740560340244, 120.98459805754821],
+  [14.587850879382245, 120.98489980606578],
+  [14.588286963528633, 120.98471205143264],
+  [14.588305133682477, 120.98446931151406],
+  [14.588157176671745, 120.98436336425678],
+  [14.588028687608057, 120.98456452993516],
+  [14.587878134667296, 120.98453502563547],
+], {color: 'blue', interactive: false})
+
+// CIT-specific navigation
+// start
+// entrance
+// leftstep
+// CIEnode1
+// CIEnode2
+const CITnode1 = [14.58763,120.98452]
+const CITnode2 = [14.58728,120.98465]
+const CITpoly = L.polygon([
+  [14.58763,120.98461],
+  [14.58776,120.98494],
+  [14.58713,120.98519],
+  [14.58700,120.98485],
+], {color: 'blue', interactive: false})
+
+// CLA-specific navigation
+// entrance
+const CLAnode1 = [14.587395297856212, 120.98391170298156]
+const CLAnode2 = [14.587230105474747, 120.98410800193018]
+const CLAnode3 = [14.58735399977304, 120.98408429432762]
+// COSCLApoly
+
+// Registrar-specific navigation
+// entrance
+const REGISTRARnode1 = [14.587386677759618, 120.98401477064333]
+const REGISTRARnode2 = [14.58748791187015, 120.98408719028798]
+// COSCLApoly
+
+// Cashier-specific navigation
+// start
+// entrance
+// leftstep
+// CIEnode1
+// CIEnode2
+// CITnode1
+// CITnode2
+const CASHIERnode1 = [14.58673,120.98485]
+const CASHIERnode2 = [14.58669,120.98443]
+const CASHIERpoly = L.polygon([
+  [14.58667,120.98463],
+  [14.58656,120.98465],
+  [14.58652,120.98423],
+  [14.58662,120.98422],
+], {color: 'blue', interactive: false})
+
+// COE-specific navigation
+// start
+// entrance
+// leftstep
+// CIEnode1
+// CIEnode2
+// CITnode1
+// CITnode2
+// CASHIERnode1
+const COEnode1 = [14.58649,120.98470] 
+const COEnode2 = [14.58642,120.98431] 
+const COEpoly = L.polygon([
+  [14.58642,120.98436],
+  [14.58628,120.98432],
+  [14.58627,120.98409],
+  [14.58640,120.98408],
+], {color: 'blue', interactive: false})
+
+// Chapel-specific navigation
+// start
+// entrance
+// leftstep
+// CIEnode1
+// CIEnode2
+// CITnode1
+// chapel
+const CHAPELpoly = L.polygon([
+  [14.58761,120.98439],
+  [14.58769,120.98457],
+  [14.58780,120.98453],
+  [14.58773,120.98436],
+], {color: 'blue', interactive: false})
+
+// Grad office-specific navigation
+// entrance
+// CLAnode1
+// CLAnode2
+const GRADOFFICEnode1 = [14.58686,120.98388]
+gradoffice
+const GRADOFFICEpoly = L.polygon([
+  [14.5867767391865, 120.9839568201875],
+  [14.586713143199947, 120.98389110606591],
+  [14.58661450449076, 120.98392195147002],
+  [14.586709249567718, 120.98401851099565],
+], {color: 'blue', interactive: false})
+
+// Freshman enrollment-specific navigation
+// start
+// entrance
+// registrarnode1
+// registrarnode2
+const FRESHMANnode1 = [14.58772,120.98425]
+// CIEnode1
+// CIEnode2
+// CITnode1
+// CITnode2
+// CASHIERnode1
+// CASHIERnode2
+// COSCLApoly
+// CASHIERpoly
+
+// Masteral enrollment-specific navigation
+// start
+// entrance
+// REGISTRARnode1
+// REGISTRARnode2
+// FRESHMANnode1
+// CIEnode1
+// CLAnode2
+// GRADOFFICEnode1
+// COSCLApoly
+// GRADOFFICEpoly
+
+
 
 // define map and turn of all zoom and movement settings
 const map = L.map('map', {
@@ -402,7 +576,6 @@ const map = L.map('map', {
 .setView(center, 17.5)
 
 
-
 // map tile and mandatory attribution
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
@@ -410,9 +583,9 @@ const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // markers for buildings
-var marker1 = L.marker(entrance)
+var marker1 = L.marker(cla)
         .addTo(map)
-        .bindPopup('<b>COS/CLA Building</b><br />Main Entrance')
+        .bindPopup('<b>COS/CLA Building</b><br />College of Liberal Arts')
 var marker2 = L.marker(cafa)
         .addTo(map)
         .bindPopup('<b>CAFA Building</b><br />College of Fine Arts')
@@ -421,10 +594,22 @@ var marker3 = L.marker(cit)
         .bindPopup('<b>CIT Building</b><br />College of Industrial Technology')
 var marker4 = L.marker(admin)
         .addTo(map)
-        .bindPopup('<b>Admin Building</b><br />Administration Offices')
+        .bindPopup('<b>Admin Building</b><br />Cashier')
 var marker5 = L.marker(cie)
         .addTo(map)
         .bindPopup('<b>CAFA Building</b><br />College of Industrial Education')
+var marker6 = L.marker(cos)
+        .addTo(map)
+        .bindPopup('<b>COS/CLA Building</b><br />College of Science')
+var marker7 = L.marker(coe)
+        .addTo(map)
+        .bindPopup('<b>COE Building</b><br />College of Engineering')
+var marker8 = L.marker(chapel)
+        .addTo(map)
+        .bindPopup('<b>Chapel</b><br />To God be the glory')
+var marker9 = L.marker(gradoffice)
+        .addTo(map)
+        .bindPopup('<b>Ripalda Hall</b><br />Grad Office')
 
 // polygon is drawn by:
 //	1st array: shaded area
@@ -456,38 +641,109 @@ var polygon = L.polygon([
 // var lineLatLngs = [cafa,admin]
 // var polyline = L.polyline(lineLatLngs, {color: 'green', interactive: false}).addTo(map)
 
+// marker functionality
+marker1.on('mouseover', () => {marker1.openPopup()})
+marker1.on('mouseout', () => {marker1.closePopup()})
+marker1.on('click', () => {
+  searchInput.value = "CLA"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker2.on('mouseover', () => {marker2.openPopup()})
+marker2.on('mouseout', () => {marker2.closePopup()})
+marker2.on('click', () => {
+  searchInput.value = "CAFA"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker3.on('mouseover', () => {marker3.openPopup()})
+marker3.on('mouseout', () => {marker3.closePopup()})
+marker3.on('click', () => {
+  searchInput.value = "CIT"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker4.on('mouseover', () => {marker4.openPopup()})
+marker4.on('mouseout', () => {marker4.closePopup()})
+marker4.on('click', () => {
+  searchInput.value = "CASHIER"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker5.on('mouseover', () => {marker5.openPopup()})
+marker5.on('mouseout', () => {marker5.closePopup()})
+marker5.on('click', () => {
+  searchInput.value = "CIE"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker6.on('mouseover', () => {marker6.openPopup()})
+marker6.on('mouseout', () => {marker6.closePopup()})
+marker6.on('click', () => {
+  searchInput.value = "COS"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker7.on('mouseover', () => {marker7.openPopup()})
+marker7.on('mouseout', () => {marker7.closePopup()})
+marker7.on('click', () => {
+  searchInput.value = "COE"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker8.on('mouseover', () => {marker8.openPopup()})
+marker8.on('mouseout', () => {marker8.closePopup()})
+marker8.on('click', () => {
+  searchInput.value = "CHAPEL"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+marker9.on('mouseover', () => {marker9.openPopup()})
+marker9.on('mouseout', () => {marker9.closePopup()})
+marker9.on('click', () => {
+  searchInput.value = "GRAD OFFICE"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
+
+
+
+
+
 // Create a new map container for the minimap
-var miniMapContainer = L.DomUtil.create('div', 'minimap-container');
-miniMapContainer.id = "minimapModal"
+function newMiniMapContainer() {
+  let container = L.DomUtil.create('div', 'minimap-container');
+  container.id = "minimapModal"
+  return container
+}
+var miniMapContainer = newMiniMapContainer()
 
 // Initialize the minimap
-// function initializeMinimap() {
-//   return L.map(miniMapContainer, {
-//     zoom: 18, // Set the initial zoom level
-//     center: center,
-//     zoomControl: false, // Disable the zoom control
-//     attributionControl: false, // Hide the attribution control
-//     dragging: false, // Disable dragging
-//     doubleClickZoom: false, // Disable double-click zoom
-//     scrollWheelZoom: false, // Disable scroll wheel zoom
-//     boxZoom: false, // Disable box zoom
-//     keyboard: false, // Disable keyboard navigation
-//     zoomSnap: 0.25 // Set the zoom snap level
-//   });
-// }
+function initializeMinimap() {
+  return L.map(miniMapContainer, {
+    zoom: 18, // Set the initial zoom level
+    center: center,
+    zoomControl: false, // Disable the zoom control
+    attributionControl: false, // Hide the attribution control
+    dragging: false, // Disable dragging
+    doubleClickZoom: false, // Disable double-click zoom
+    scrollWheelZoom: false, // Disable scroll wheel zoom
+    boxZoom: false, // Disable box zoom
+    keyboard: false, // Disable keyboard navigation
+    zoomSnap: 0.25 // Set the zoom snap level
+  });
+}
 
-var miniMap = L.map(miniMapContainer, {
-  zoom: 18, // Set the initial zoom level
-  center: center,
-  zoomControl: false, // Disable the zoom control
-  attributionControl: false, // Hide the attribution control
-  dragging: false, // Disable dragging
-  doubleClickZoom: false, // Disable double-click zoom
-  scrollWheelZoom: false, // Disable scroll wheel zoom
-  boxZoom: false, // Disable box zoom
-  keyboard: false, // Disable keyboard navigation
-  zoomSnap: 0.25 // Set the zoom snap level
-});
+var miniMap = initializeMinimap()
 
 var interval = []
 function minimap(destination) {
@@ -503,79 +759,280 @@ function minimap(destination) {
         ],
         [
           CIEpoly
-        ]
+        ],
+        [2500, 1333, 4875, 4292] // interval between points
       ]
-
-      interval = [2500, 3833, 8708, 13000]
     }
+    else if (destination === 'COS') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          COSnode1
+        ],
+        [
+          COSCLApoly
+        ],
+        [3250, 833, 4333, 2792]
+      ]
+    }
+    else if (destination === 'CAFA') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          CIEnode2,
+          CAFAnode1
+        ],
+        [
+          CAFApoly
+        ],
+        // [3250, 833, 4333, 2792]
+        // [ 0, 2150, 8230, 12180, 14180,  20210, ]
+        // [ 2150, 6080, 3950, 2000, 6030, ]
+        // 8833, 10875, 20708
+        // 2042, 9833
+        [3250, 833, 4333, 2042, 9833]
+      ]
+    }
+    else if (destination === 'CIT') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          CIEnode2,
+          CITnode1,
+          CITnode2,
+        ],
+        [
+          CITpoly
+        ],
+        //          8:20  12:13 15:23 19:05
+        //          8833  12541 15958 19208
+        [3250, 833, 4333, 3000, 3417, 3250]
+      ]
+    }
+    else if (destination === 'CLA') {
+      var package = [
+        [
+          entrance,
+          CLAnode1,
+          CLAnode2,
+          CLAnode3,
+        ],
+        [
+          COSCLApoly
+        ],
+        //     3500  6000
+        [1000, 2500, 4000]
+      ]
+    }
+    else if (destination === 'REGISTRAR') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          REGISTRARnode1,
+          REGISTRARnode2
+        ],
+        [
+          COSCLApoly
+        ],
+        //1:0  3:0   6:12  12:0
+        //1000 3000  6500 12000
+        [1000, 2000, 4500, 6000]
+      ]
+    }
+    else if (destination === 'CASHIER') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          CIEnode2,
+          CITnode1,
+          CITnode2,
+          CASHIERnode1,
+          CASHIERnode2,
+        ],
+        [
+          CASHIERpoly
+        ],
+        //          8:20             19:05 20:12 23:06
+        //          8833             17500 20500 23250
+        [3250, 833, 4333, 3000, 3417, 3250, 2500, 2000]
+      ]
+    }
+    else if (destination === 'COE') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          CIEnode2,
+          CITnode1,
+          CITnode2,
+          CASHIERnode1,
+          COEnode1,
+          COEnode2,
+        ],
+        [
+          COEpoly
+        ],
+        //          8:20             19:05 20:12 24:00 28:00
+        //          8833             17500 20500 24000 28000
+        [3250, 833, 4333, 3000, 3417, 3250, 2500, 3500, 4000]
+      ]
+    }
+    else if (destination === 'CHAPEL') {
+      var package = [
+        [
+          start,
+          entrance,
+          entranceLeftStep,
+          CIEnode1,
+          CIEnode2,
+          CITnode1,
+          chapel
+        ],
+        [
+          CHAPELpoly
+        ],
+        //          8:20  12:13 15:23 19:05
+        //          8833  12541 15958 19208
+        [3250, 833, 4333, 3000, 3417, 2000]
+      ]
+    }
+    else if (destination === 'GRAD OFFICE') {
+      var package = [
+        [
+          entrance,
+          CLAnode1,
+          CLAnode2,
+          GRADOFFICEnode1,
+          gradoffice,
+        ],
+        [
+          GRADOFFICEpoly
+        ],
+        //     3500  6000
+        [1000, 2500, 3800, 900]
+      ]
+    }
+    else if (destination === 'ENROLLMENT TOUR GUIDE FOR FRESHMEN') {
+      var package = [
+        [
+          start, 
+          entrance,
+          REGISTRARnode1,
+          REGISTRARnode2,
+          FRESHMANnode1,
+          CIEnode2,
+          CITnode1,
+          CITnode2,
+          CASHIERnode1,
+          CASHIERnode2,
+        ],
+        [
+          COSCLApoly,
+          CASHIERpoly
+        ],
+        //10:12  14:12   26:0  29:12  31:12  32:12
+        //10500  14500  26000  29500  31500  32500 35500 36500
+        // [ 10500,  4000, 11500,  3500,  2000, 1000,  3000, 1000]
+        [ 10500,  4000, 5750, 5750,  3500,  2000, 1000,  3000, 1000]
+      ]
+    }
+    else if (destination === 'ENROLLMENT TOUR GUIDE FOR MASTERAL') {
+      var package = [
+        [
+          start,
+          entrance,
+          REGISTRARnode1,
+          FRESHMANnode1,
+          CIEnode2,
+          CLAnode2,
+          GRADOFFICEnode1,
+          gradoffice
+        ],
+        [
+          COSCLApoly,
+          GRADOFFICEpoly
+        ],
+        //      5:0   12:12   16:0 19:17  23:0
+        //      5000  12500  16000 19708 23000
+         [2208, 2792,  9708,  1500, 2708, 2292, 1000]
+      ]
+    }
+
     return createMiniMap(package)
 }
   
 
   
 function createMiniMap(data) {
+  // clean the minimap first
+  miniMap.eachLayer(function (layer) {
+    miniMap.removeLayer(layer);
+  });
+
+  // more sanity checking
+  miniMap.remove()
+  miniMap = initializeMinimap()
+
   var points = data[0]
   var other = data[1]
+  var interval = data[2]
   // console.log(data)
   var line = L.polyline(points, {color: 'green', interactive: false}).addTo(miniMap)
-  // miniMap.panTo(points[0])
-
-  // var animatedMarker = L.animatedMarker(line.getLatLngs());
-
-  // miniMap.addLayer(animatedMarker)
-
-//   let myMarkerPlayer = L.markerPlayer([
-//       {
-//           latlng: [48.8567, 2.3508]
-//       },
-//       {
-//           latlng: [48.8567, 2.3508]
-//       }
-//   ], 30000).addTo(map);
-// //...
-// myMarkerPlayer.start();
-
-
+  miniMap.panTo(points[0])
   other.forEach(func => func.addTo(miniMap))
 
+  // create navigation
+  var objArr = points.map(function(x) {return {latlng: x};})
+	let marker = L.markerPlayer(objArr, interval).addTo(miniMap)
 
   // Add a tile layer to the minimap
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(miniMap);
 
-  
-  // Create a marker for the current position
-  var currentPositionMarker = L.marker(points[0]).addTo(miniMap);
-
-  // Function to update the position of the marker on the minimap
-  function updateMiniMapMarker(latlng) {
-      currentPositionMarker.setLatLng(latlng);
-      miniMap.panTo(latlng);
-  }
-
   // Function to animate the route
   function animateRoute() {
-      var currentPoint = 0;
-      var interval = setInterval(function() {
-          if (currentPoint < points.length) {
-              updateMiniMapMarker(points[currentPoint]);
-              currentPoint++;
-          } else {
-              clearInterval(interval);
-          }
-      }, 500); // Adjust the delay (in milliseconds) between points
-  }
-
+    $('#fileModal').on('shown.bs.modal', function(){
+      if (document.getElementById("minimapModal")) {
+        
+        marker.start();
   
-  // Update the position of the marker on the minimap during route animation
-  miniMap.on('moveend', function () {
-        updateMiniMapMarker(miniMap.getCenter());
+        // always center on the marker
+        var interval = setInterval(function() {
+          if (!marker.isEnded()) {
+            miniMap.panTo(marker.getLatLng())
+          } else {
+            clearInterval(interval);
+            L.marker(marker.getLatLng({interactive: false})).addTo(miniMap)
+            delete marker
+          }
+        }, 1);
+      }
     });
     
-    // function animateRoute() {
-    //   console.log("Hello world")
-    // }
+    $("#fileModal").on('hide.bs.modal', function(){
+      marker.stop()
+      marker.remove()
+      markerHidden = true
+    })
+
+  }
 
   // Style the minimap container
   var miniMapStyle = document.createElement('style');
