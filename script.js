@@ -36,6 +36,7 @@ $(document).ready(function() {
     const initialVideo = videoSelector.value;
     const videoElement = document.getElementById('video-background');
     videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
+    videoElement.type = "video/mp4"
     videoElement.load();
     resizeVideo();
     
