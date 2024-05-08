@@ -116,11 +116,33 @@ body {
 }
 
 .modal-dialog{
-    margin: auto;
-    max-width: none;  
+    /* margin: auto; */
+    margin: 1.75rem auto;
+    max-width: 100%;  
+    /* max-width: none; */
     width: fit-content;
 }
 
+.modal-content {
+    max-height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+}
+
+
+.modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 1055;
+    background-color: white;
+}
+
+
+.modal-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1055;
+    background-color: white;
+}
 
 
 .search-results {
