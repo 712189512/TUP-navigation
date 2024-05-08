@@ -149,6 +149,10 @@ const searchPaths = [
   'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
 ]
 const videoDropups = [
+  'ADMISSION REQUIRMENTS',
+  'AR/VR WALKTHROUGH',
+  '3D WALKTHROUGH',
+  'VR TOUR TUP-MANILA',
   'Information and History',
   'ENROLLMENT TOUR GUIDE FOR FRESHMEN',
   'ENROLLMENT TOUR GUIDE FOR MASTERAL',
@@ -163,6 +167,10 @@ const videoDropups = [
   'GRAD OFFICE',
 ]
 // const videoPaths = [
+//   'assets\ADMISSION REQUIRMENTS.mp4'
+//   'assets\AR/VR WALKTHROUGH.mp4'
+//   'assets\3D WALKTHROUGH.mp4'
+//   'assets\VR TOUR TUP-MANILA.mp4'
 //   'assets\TUP INFO N HISTORY VIDEO-EDITED.mp4'
 //   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
 //   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
