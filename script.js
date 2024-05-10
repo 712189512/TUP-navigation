@@ -35,8 +35,8 @@ $(document).ready(function() {
     // Load the intro video then the looping video
     const initialVideo = videoSelector.value;
     const videoElement = document.getElementById('video-background');
-    // videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
-    videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
+    videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
+    // videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
     videoElement.type = "video/mp4"
     videoElement.load();
     resizeVideo();
@@ -111,49 +111,50 @@ const searchTerms = [
 ];
 
 // associated search paths
-// const searchPaths = [
-//   'assets\\Programs.jpg',
-//   'assets\\Admission Requirements.jpg',
-//   'assets\\Mission Vision.jpg', 
-//   'assets\\Graduate Program Offers.jpg', 
-//   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
-//   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
-//   'assets\\REGISTRAR.mp4',
-//   'assets\\CASHIER.mp4',
-//   'assets\\CAFA.mp4',
-//   'assets\\CIE.mp4',
-//   'assets\\CIT.mp4',
-//   'assets\\COS.mp4',
-//   'assets\\CLA.mp4',
-//   'assets\\COE.mp4',
-//   'assets\\CHAPEL.mp4',
-//   'assets\\GRAD OFFICE.mp4',
-// ]
-
 const searchPaths = [
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Programs.jpg',
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Admission%20Requirements.jpg',
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Mission%20Vision.jpg', 
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Graduate%20Program%20Offers.jpg', 
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+  'assets\\Programs.jpg',
+  'assets\\Admission Requirements.jpg',
+  'assets\\Mission Vision.jpg', 
+  'assets\\Graduate Program Offers.jpg', 
+  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
+  'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
+  'assets\\CAFA (1).mp4',
+  'assets\\CIE (1).mp4',
+  'assets\\CIT (1).mp4',
+  'assets\\COS (1).mp4',
+  'assets\\CLA.mp4',
+  'assets\\COE (1).mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
 ]
+
+// const searchPaths = [
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Programs.jpg',
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Admission%20Requirements.jpg',
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Mission%20Vision.jpg', 
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Graduate%20Program%20Offers.jpg', 
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+// ]
 
 const videoDropups = [
   'Information and History',
   'ENROLLMENT TOUR GUIDE FOR FRESHMEN',
   'ENROLLMENT TOUR GUIDE FOR MASTERAL',
   'REGISTRAR',
+  'CASHIER',
   'CAFA',
   'CIE',
   'CIT',
@@ -204,37 +205,56 @@ const videoDropups = [
 //   'assets\\GRAD OFFICE.mp4',
 // ]
 
-// const videoPaths = [
-//   'assets\\TUP INFO N HISTORY VIDEO-EDITED.mp4',
-//   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
-//   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
-//   'assets\\REGISTRAR.mp4',
-//   'assets\\CASHIER.mp4',
-//   'assets\\CAFA.mp4',
-//   'assets\\CIE.mp4',
-//   'assets\\CIT.mp4',
-//   'assets\\COS.mp4',
-//   'assets\\CLA.mp4',
-//   'assets\\COE.mp4',
-//   'assets\\CHAPEL.mp4',
-//   'assets\\GRAD OFFICE.mp4',
-// ]
-
 const videoPaths = [
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/TUP%20INFO%20N%20HISTORY%20VIDEO-EDITED.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+  'assets\\VIRTUAL REALITY OF LAKBAY TUP-M.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
+  'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
+  'assets\\CAFA (1).mp4',
+  'assets\\CIE (1).mp4',
+  'assets\\CIT (1).mp4',
+  'assets\\COS (1).mp4',
+  'assets\\CLA.mp4',
+  'assets\\COE (1).mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
 ]
+
+const navigationPaths = [
+  'assets\\Programs.jpg',
+  'assets\\Admission Requirements.jpg',
+  'assets\\Mission Vision.jpg', 
+  'assets\\Graduate Program Offers.jpg', 
+  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
+  'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
+  'assets\\CAFA.mp4',
+  'assets\\CIE.mp4',
+  'assets\\CIT.mp4',
+  'assets\\COS.mp4',
+  'assets\\CLA.mp4',
+  'assets\\COE.mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
+]
+
+// const videoPaths = [
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/TUP%20INFO%20N%20HISTORY%20VIDEO-EDITED.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+// ]
 
 function generateDropdown(namesArray) {
   var dropdown = document.getElementById('video-selector');
@@ -355,7 +375,7 @@ var minimapAppend = null
 function openFileModal() {
   const selectedSearchTerm = searchInput.value;
   // const intermediate = originalsearchPaths[searchTerms.indexOf(selectedSearchTerm)]
-  const path = searchPaths[searchTerms.indexOf(selectedSearchTerm)]
+  const path = navigationPaths[searchTerms.indexOf(selectedSearchTerm)]
   const modalBody = fileModal.querySelector('.file-modal-body');
   var newElement;
 
@@ -792,6 +812,26 @@ marker9.on('click', () => {
   openFileModal()
 })
 
+// another minimap for the home screen
+const homemap = L.map('newMinimap', {
+  center: center,
+  zoomControl: false,
+  dragging: false,
+  boxZoom: false,
+  doubleClickZoom: false,
+  keyboard: false,
+  scrollWheelZoom: false,
+  touchZoom: false,
+  maxBounds: bounds,
+  zoomSnap: 0.1,
+})
+.setView(center, 16.6)
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(homemap);
+
 
 
 
@@ -1131,6 +1171,16 @@ function createMiniMap(data) {
   return { miniMapContainer, animateRoute };
 }
 
+
+// resize minimap just in case
+document.addEventListener('click', () => {
+  homemap.invalidateSize();
+})
+// $('#newMinimap').on('DOMContentLoaded', function(){
+//   setTimeout(function() {
+//     homemap.invalidateSize();
+//   }, 1);
+// });
 
 
 // resize map to fit inside popup modal

@@ -105,14 +105,20 @@ body {
 
 #map-container {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 250px;
+    width: 250px;
     margin: 10px;
     bottom: 0;
     right: 0;
     background-color: transparent;
     background-repeat: no-repeat;
-    border: none;
+    border: 10px black;
+    border-radius: 50%;
+}
+
+#newMinimap {
+    border-radius: 50%;
+    /* border: 10px; */
 }
 
 .modal-dialog{
