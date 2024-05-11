@@ -22,15 +22,8 @@ $(document).ready(function() {
     // Call the resizeVideo function on window resize
     window.addEventListener('resize', resizeVideo);
 
-    // Change the video source based on the selected option
+    // selector for background video element
     const videoSelector = document.getElementById('video-selector');
-    videoSelector.addEventListener('change', function() {
-        const videoSource = this.value;
-        const videoElement = document.getElementById('video-background');
-        videoElement.src = videoSource;
-        videoElement.load();
-        resizeVideo();
-    });
 
     // Load the intro video then the looping video
     const initialVideo = videoSelector.value;
@@ -150,6 +143,7 @@ const searchPaths = [
 // ]
 
 const videoDropups = [
+  'Home Page',
   'Information and History',
   'ENROLLMENT TOUR GUIDE FOR FRESHMEN',
   'ENROLLMENT TOUR GUIDE FOR MASTERAL',
@@ -206,6 +200,7 @@ const videoDropups = [
 // ]
 
 const videoPaths = [
+  'assets\\3D Tour Guide.mp4',
   'assets\\VIRTUAL REALITY OF LAKBAY TUP-M.mp4',
   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
@@ -241,7 +236,7 @@ const navigationPaths = [
 ]
 
 // const videoPaths = [
-//   'https://github.com/712189512/TUP-navigation/raw/main/assets/TUP%20INFO%20N%20HISTORY%20VIDEO-EDITED.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4',
 //   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
 //   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
 //   'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
@@ -259,19 +254,22 @@ const navigationPaths = [
 function generateDropdown(namesArray) {
   var dropdown = document.getElementById('video-selector');
 
-  // Clear existing options
+  // // Clear existing options
   dropdown.innerHTML = '';
 
-  // Create and append new options
+  // // Create and append new options
   namesArray.forEach(function(name) {
-    var option = document.createElement('option');
-    option.value = videoPaths[namesArray.indexOf(name)];    // path
-    option.textContent = name;                              // shown text
-    if (!dropdown.hasChildNodes) {
-      option.selected = true
-    }
-    dropdown.appendChild(option);
+      var option = document.createElement('option');
+      // var option = document.createElement('li');
+      option.classList.add('dropup-item')
+      // console.log(videoPaths[namesArray.indexOf(name)])
+      option.value = videoPaths[namesArray.indexOf(name)];    // path
+      // option.setAttribute('value', videoPaths[index])          // path
+      option.textContent = name;                              // shown text
+      dropdown.appendChild(option);
+      // dropupMenu.appendChild(option);
   });
+    
 }
 generateDropdown(videoDropups)
 
@@ -469,6 +467,83 @@ function changeSelectedOption(newValue) {
   }
 }
 
+function ARVRselect(univ) {
+  if (univ === "COS") {
+    searchInput.value = "COS"
+    changeSelectedOption(searchInput.value)
+    $('#ARVR').modal('hide');
+
+    const videoElement = document.getElementById('video-background');
+    videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.load();
+    resizeVideo();
+  }
+  else if (univ === "CLA") {
+    searchInput.value = "CLA"
+    changeSelectedOption(searchInput.value)
+    $('#ARVR').modal('hide');
+
+    const videoElement = document.getElementById('video-background');
+    videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.load();
+    resizeVideo();
+  }
+  else if (univ === "COE") {
+    searchInput.value = "COE"
+    changeSelectedOption(searchInput.value)
+    $('#ARVR').modal('hide');
+
+    const videoElement = document.getElementById('video-background');
+    videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.load();
+    resizeVideo();
+  }
+  else if (univ === "CAFA") {
+    searchInput.value = "CAFA"
+    changeSelectedOption(searchInput.value)
+    $('#ARVR').modal('hide');
+
+    const videoElement = document.getElementById('video-background');
+    videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.load();
+    resizeVideo();
+  }
+  else if (univ === "CIE") {
+    searchInput.value = "CIE"
+    changeSelectedOption(searchInput.value)
+    $('#ARVR').modal('hide');
+
+    const videoElement = document.getElementById('video-background');
+    videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.load();
+    resizeVideo();
+  }
+  else if (univ === "CIT") {
+    searchInput.value = "CIT"
+    changeSelectedOption(searchInput.value)
+    $('#ARVR').modal('hide');
+
+    const videoElement = document.getElementById('video-background');
+    videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.load();
+    resizeVideo();
+  }
+}
+
+function interactiveTour() {
+  const videoElement = document.getElementById('video-background');
+    videoElement.src = "assets/3D Tour Guide.mp4"
+    videoElement.load();
+    resizeVideo();
+}
+
+
+function URtour() {
+  const videoElement = document.getElementById('video-background');
+    videoElement.src = "assets/VIRTUAL REALITY OF LAKBAY TUP-M.mp4"
+    videoElement.load();
+    resizeVideo();
+}
 
 
 // common coordinates for navigation purposes
@@ -1176,12 +1251,40 @@ function createMiniMap(data) {
 document.addEventListener('click', () => {
   homemap.invalidateSize();
 })
-// $('#newMinimap').on('DOMContentLoaded', function(){
-//   setTimeout(function() {
-//     homemap.invalidateSize();
-//   }, 1);
-// });
 
+
+// change name on carousel image switch
+$('#imageCarousel').on('slid.bs.carousel', function () {
+  var $current = $(this).find('.carousel-item.active');
+  var altText = $current.find('.modal-image').data('alt-text');
+  $('#imageModalLabel').text(altText);
+});
+
+// show overlays on carousel
+$('#imageCarousel').on('shown.bs.modal', function () {
+  $('#imageCarousel').on('mousemove', function (e) {
+    var $carousel = $(this);
+    var $carouselInner = $carousel.find('.carousel-inner');
+    var carouselWidth = $carouselInner.outerWidth();
+    // var carouselHeight = $carouselInner.outerHeight();
+    var overlayWidth = $('.carousel-overlay').outerWidth();
+
+    var offsetX = e.offsetX;
+    // var offsetY = e.offsetY;
+
+    if (offsetX < overlayWidth) {
+        $('.carousel-overlay-left').css('opacity', 1);
+    } else {
+        $('.carousel-overlay-left').css('opacity', 0);
+    }
+
+    if (offsetX > carouselWidth - overlayWidth) {
+        $('.carousel-overlay-right').css('opacity', 1);
+    } else {
+        $('.carousel-overlay-right').css('opacity', 0);
+    }
+  });
+});
 
 // resize map to fit inside popup modal
 $('#mapModal').on('shown.bs.modal', function(){
