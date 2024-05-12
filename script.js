@@ -532,7 +532,7 @@ function ARVRselect(univ) {
 
 function interactiveTour() {
   const videoElement = document.getElementById('video-background');
-    videoElement.src = "assets/3D Tour Guide.mp4"
+    videoElement.src = "assets/3D Virtual Tour Guide With Voice Over Compressed.mp4"
     videoElement.load();
     resizeVideo();
 }
