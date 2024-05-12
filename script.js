@@ -1224,32 +1224,6 @@ $('#imageCarousel').on('slid.bs.carousel', function () {
   $('#imageModalLabel').text(altText);
 });
 
-// show overlays on carousel
-$('#imageCarousel').on('shown.bs.modal', function () {
-  $('#imageCarousel').on('mousemove', function (e) {
-    var $carousel = $(this);
-    var $carouselInner = $carousel.find('.carousel-inner');
-    var carouselWidth = $carouselInner.outerWidth();
-    // var carouselHeight = $carouselInner.outerHeight();
-    var overlayWidth = $('.carousel-overlay').outerWidth();
-
-    var offsetX = e.offsetX;
-    // var offsetY = e.offsetY;
-
-    if (offsetX < overlayWidth) {
-        $('.carousel-overlay-left').css('opacity', 1);
-    } else {
-        $('.carousel-overlay-left').css('opacity', 0);
-    }
-
-    if (offsetX > carouselWidth - overlayWidth) {
-        $('.carousel-overlay-right').css('opacity', 1);
-    } else {
-        $('.carousel-overlay-right').css('opacity', 0);
-    }
-  });
-});
-
 // resize map to fit inside popup modal
 $('#mapModal').on('shown.bs.modal', function(){
   setTimeout(function() {

@@ -107,25 +107,6 @@ body {
     opacity: 1;
 }
 
-.carousel-overlay {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 15%;
-    background-color: rgba(128, 128, 128, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 1;
-}
-.carousel-overlay-left {
-    left: 0;
-}
-.carousel-overlay-right {
-    right: 0;
-}
-#imageCarousel:hover .carousel-overlay {
-    opacity: 1;
-}
 /* .modal-header {
     padding: 0.5rem 1rem;
     background-color: rgba(0, 0, 0, 0.5);
