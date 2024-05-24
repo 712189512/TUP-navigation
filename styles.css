@@ -107,6 +107,35 @@ body {
     opacity: 1;
 }
 
+/* Media query for screens smaller than 600px */
+@media (max-width: 1000vh) {
+    .btn-light {
+        left: 40px;
+        position: absolute;
+        font-size: medium;
+        max-width: 100%;
+        width: 240px;
+        height: 90px;
+        border-radius: 25px;
+    
+    }
+
+    .btn-light:nth-of-type(1) {
+        bottom: 320px;
+    }
+
+    .btn-light:nth-of-type(2) {
+        bottom: 220px;
+    }
+
+    .btn-light:nth-of-type(3) {
+        bottom: 120px;
+    }
+
+    .btn-light:nth-of-type(4) {
+        bottom: 20px;
+    }
+}
 /* .modal-header {
     padding: 0.5rem 1rem;
     background-color: rgba(0, 0, 0, 0.5);
