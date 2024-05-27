@@ -69,7 +69,12 @@
 
     <!-- autoplay is defined in code -->
     <div class="background-video" id="background-video">
-        <video id="video-background" autoplay></video>
+        <div id="loadingScreen">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+        
+        <video id="video-background" autoplay playsinline></video>
     </div>
 
     <!-- hide this (with display: none;) because more than half of the code is attached to this div -->
@@ -79,22 +84,22 @@
         </select>
     </div>
     
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#carouselModal">
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#carouselModal" id="homeButtons">
         <i class="fa-solid fa-id-card"></i>
         Admission Requirements
     </button>
 
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ARVR">
+    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ARVR" id="homeButtons">
         <i class="fa-solid fa-vr-cardboard"></i>
         AR/VR Tour Guide
     </button>
 
-    <button type="button" class="btn btn-light" data-toggle="modal" onclick="interactiveTour()">
+    <button type="button" class="btn btn-light" data-toggle="modal" onclick="interactiveTour()" id="homeButtons">
         <i class="fa-solid fa-cube"></i>
        Interactive 3D Tour Guide
     </button>
 
-    <button type="button" class="btn btn-light" data-toggle="modal" onclick="URtour()">
+    <button type="button" class="btn btn-light" data-toggle="modal" onclick="URtour()" id="homeButtons">
         <i class="fa-solid fa-map"></i>
         UR Tour LAKBAY TUP-M
     </button>

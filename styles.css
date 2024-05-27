@@ -32,16 +32,46 @@ body {
   #fade-out-picture.animate {
     animation: fadeOut 2s ease forwards; /* Adjust the animation duration as needed */
   }
+
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    color: #fff;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
   
 #video-background {
     position: fixed;
-    right: 0;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
     z-index: -1;
+    transform: translate(-50%, -50%);
 }
 
 .search-container {
@@ -108,8 +138,8 @@ body {
 }
 
 /* Media query for screens smaller than 600px */
-@media (max-width: 1000vh) {
-    .btn-light {
+@media (max-width: 600vh) {
+    #homeButtons {
         left: 40px;
         position: absolute;
         font-size: medium;
@@ -120,19 +150,19 @@ body {
     
     }
 
-    .btn-light:nth-of-type(1) {
+    #homeButtons:nth-of-type(1) {
         bottom: 320px;
     }
 
-    .btn-light:nth-of-type(2) {
+    #homeButtons:nth-of-type(2) {
         bottom: 220px;
     }
 
-    .btn-light:nth-of-type(3) {
+    #homeButtons:nth-of-type(3) {
         bottom: 120px;
     }
 
-    .btn-light:nth-of-type(4) {
+    #homeButtons:nth-of-type(4) {
         bottom: 20px;
     }
 }

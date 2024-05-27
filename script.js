@@ -1,26 +1,34 @@
 $(document).ready(function() {
-    $('.dropdown-toggle').dropdown();
+  $('.dropdown-toggle').dropdown();
+  // Resize video to fill the window
+  const resizeVideo = () => {
+    loadingScreen.style.display = 'none';
+    const videoRatio = videoBackground.offsetWidth / videoBackground.offsetHeight;
+    const windowRatio = window.innerWidth / window.innerHeight;
 
-    // Resize video to fill the window
-    const resizeVideo = () => {
-        const video = document.getElementById('video-background');
-        const containerWidth = window.innerWidth;
-        const containerHeight = window.innerHeight;
+    if (videoRatio < windowRatio) {
+      videoBackground.style.width = 'auto';
+      videoBackground.style.height = '100vh';
+    } else {
+      videoBackground.style.width = '100vw';
+      videoBackground.style.height = 'auto';
+    }
+  };
 
-        const videoWidth = video.offsetWidth;
-        const videoHeight = video.offsetHeight;
-
-        const widthRatio = containerWidth / videoWidth;
-        const heightRatio = containerHeight / videoHeight;
-
-        const ratio = Math.max(widthRatio, heightRatio);
-
-        video.style.width = videoWidth * ratio + 'px';
-        video.style.height = videoHeight * ratio + 'px';
+  function loadScreen() {
+    // Show loading screen initially
+    loadingScreen.style.display = 'flex';
+  
+    // Hide loading screen when video is loaded
+    videoBackground.onloadeddata = function() {
+      resizeVideo(); // Call the resizeVideo function here
     };
+  }
+
 
     // Call the resizeVideo function on window resize
     window.addEventListener('resize', resizeVideo);
+    window.onload = resizeVideo()
 
     // selector for background video element
     const videoSelector = document.getElementById('video-selector');
@@ -32,13 +40,15 @@ $(document).ready(function() {
     videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
     videoElement.type = "video/mp4"
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
     
     const playNextVideo = () => {
       videoElement.src = initialVideo;
       videoElement.loop = true;
       videoElement.load();
-      resizeVideo();
+      loadingScreen.style.display = 'flex';
+      loadScreen();
     }
     videoElement.addEventListener('ended', playNextVideo);
 });
@@ -78,6 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+const loadingScreen = document.getElementById('loadingScreen');
+const videoBackground = document.getElementById('video-background');
 
 const searchInput = document.getElementById('searchInput');
 const suggestionList = document.getElementById('suggestionList');
@@ -377,6 +389,9 @@ function openFileModal() {
 
   // if modal has a minimap, play the navigation
   if (minimapAppend) {
+    // newElement.onloadeddata = function() {
+    //   minimapHandler.animateRoute();
+    // }
     minimapHandler.animateRoute();
   }
 
@@ -438,7 +453,8 @@ function ARVRselect(univ) {
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
   }
   else if (univ === "CLA") {
     searchInput.value = "CLA"
@@ -448,7 +464,8 @@ function ARVRselect(univ) {
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
   }
   else if (univ === "COE") {
     searchInput.value = "COE"
@@ -458,7 +475,8 @@ function ARVRselect(univ) {
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
   }
   else if (univ === "CAFA") {
     searchInput.value = "CAFA"
@@ -468,7 +486,8 @@ function ARVRselect(univ) {
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
   }
   else if (univ === "CIE") {
     searchInput.value = "CIE"
@@ -478,7 +497,8 @@ function ARVRselect(univ) {
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
   }
   else if (univ === "CIT") {
     searchInput.value = "CIT"
@@ -488,7 +508,8 @@ function ARVRselect(univ) {
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
   }
 }
 
@@ -497,7 +518,8 @@ function interactiveTour() {
     videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Virtual%20Tour%20Guide%20With%20Voice%20Over%20Compressed.mp4"
     // videoElement.src = "assets/3D Virtual Tour Guide With Voice Over Compressed.mp4"
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
 }
 
 
@@ -506,7 +528,8 @@ function URtour() {
     videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4"
     // videoElement.src = "assets/VIRTUAL REALITY OF LAKBAY TUP-M.mp4"
     videoElement.load();
-    resizeVideo();
+    loadingScreen.style.display = 'flex';
+    loadScreen();
 }
 
 
