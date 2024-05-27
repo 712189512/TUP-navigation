@@ -138,101 +138,21 @@ body {
 }
 
 /* Media query for screens smaller than 600px */
-@media (max-width: 600vh) {
-    #homeButtons {
-        left: 40px;
-        position: absolute;
-        font-size: medium;
-        max-width: 100%;
-        width: 240px;
-        height: 90px;
-        border-radius: 25px;
-    
-    }
 
-    #homeButtons:nth-of-type(1) {
-        bottom: 320px;
-    }
-
-    #homeButtons:nth-of-type(2) {
-        bottom: 220px;
-    }
-
-    #homeButtons:nth-of-type(3) {
-        bottom: 120px;
-    }
-
-    #homeButtons:nth-of-type(4) {
-        bottom: 20px;
-    }
+#homeButtons {
+    position: absolute; /* Fixed positioning */
+    left: 0;
+    bottom: 0; /* Align container to the bottom */
+    padding: 10px; /* Optional: Add padding for better visibility */
+    display: flex;
 }
-/* .modal-header {
-    padding: 0.5rem 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-} */
+    
+#homeButton {
+    margin-left: 10px; /* Add some spacing between buttons */
+}
 
 
-
-/* .dropdown-item {
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.5rem;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
-  }
-
-   .dropup-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropup-toggle {
-    background-color: #f1f1f1;
-    color: #333;
-    padding: 10px 16px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-  }
-  
-  .dropup-menu {
-    position: absolute;
-    z-index: 1;
-    bottom: 100%; 
-    left: 0; 
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: none;
-  }
-  
-  .dropup-item {
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    color: #333;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-top: none;
-  }
-  
-  .dropup-item:first-child {
-    border-top: 1px solid #ddd;
-  }
-  
-  .dropup-item:hover {
-    background-color: #f1f1f1;
-  } */
-
-
-  
-
-  body {
+body {
     font-family: Arial, sans-serif;
 }
 
@@ -255,8 +175,8 @@ body {
 
 #map-container {
     position: absolute;
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     margin: 10px;
     bottom: 0;
     right: 0;
@@ -274,9 +194,10 @@ body {
 .modal-dialog{
     /* margin: auto; */
     margin: 1.75rem auto;
-    max-width: 75%;  
+    max-width: -moz-fit-content;
+    max-width: fit-content;  
     /* max-width: none; */
-    width: fit-content;
+    width: max-content;
 }
 
 .modal-content {
@@ -321,4 +242,12 @@ body {
 .ar-vr-buttons {
     width: 100px;
     height: 100px;
+}
+
+/* for mobile screens */
+@media (max-width: 767px) {
+    #map-container {
+        height: 100px;
+        width: 100px;
+    }
 }

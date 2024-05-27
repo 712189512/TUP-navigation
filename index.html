@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LAKBAY</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles.css"> <!-- all styles go here -->
@@ -19,8 +20,8 @@
 
         <!-- node stuff -->
         <!-- <script src="node_modules\leaflet.animatedmarker\src\AnimatedMarker.js"></script> -->
-        <script src="./markerplayer.js" async defer></script>
-        <script src="script.js" async defer></script> <!-- all code go here -->
+        <script src="./markerplayer.js" defer></script>
+        <script src="script.js" defer></script> <!-- all code go here -->
         <!-- <script src="https://github.com/712189512/TUP-navigation/raw/main/node_modules/leaflet.markerplayer/dist/markerplayer.js"></script> -->
         <!-- <script src="https://github.com/712189512/TUP-navigation/raw/main/node_modules/leaflet.markerplayer/dist/markerplayer-src.esm.js"></script> -->
         
@@ -31,6 +32,17 @@
         <img src="assets/TUP FACADE-2.jpg" alt="facade">
     </div>
 
+    <!-- autoplay is defined in code -->
+    <div class="background-video" id="background-video">
+        <div id="loadingScreen">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+        
+        <video id="video-background" autoplay playsinline></video>
+
+    </div>
+    
     <!-- search modal -->
     <div class="search-container">
         <div class="container">
@@ -47,6 +59,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- file modal -->
     <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" aria-hidden="true">
@@ -67,15 +80,7 @@
         </div>
     </div>
 
-    <!-- autoplay is defined in code -->
-    <div class="background-video" id="background-video">
-        <div id="loadingScreen">
-            <div class="spinner"></div>
-            <p>Loading...</p>
-        </div>
-        
-        <video id="video-background" autoplay playsinline></video>
-    </div>
+
 
     <!-- hide this (with display: none;) because more than half of the code is attached to this div -->
     <div class="dropup" style="position: absolute; bottom: 20px; left: 20px; display: none;">
@@ -83,26 +88,29 @@
             <!-- dropdown is now procedurally generated -->
         </select>
     </div>
+
+    <div class="container" id="homeButtons">
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#carouselModal" id="homeButton">
+            <i class="fa-solid fa-id-card"></i>
+            Admission Requirements
+        </button>
     
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#carouselModal" id="homeButtons">
-        <i class="fa-solid fa-id-card"></i>
-        Admission Requirements
-    </button>
-
-    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ARVR" id="homeButtons">
-        <i class="fa-solid fa-vr-cardboard"></i>
-        AR/VR Tour Guide
-    </button>
-
-    <button type="button" class="btn btn-light" data-toggle="modal" onclick="interactiveTour()" id="homeButtons">
-        <i class="fa-solid fa-cube"></i>
-       Interactive 3D Tour Guide
-    </button>
-
-    <button type="button" class="btn btn-light" data-toggle="modal" onclick="URtour()" id="homeButtons">
-        <i class="fa-solid fa-map"></i>
-        UR Tour LAKBAY TUP-M
-    </button>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#ARVR" id="homeButton">
+            <i class="fa-solid fa-vr-cardboard"></i>
+            AV/VR Tour Guide
+        </button>
+    
+        <button type="button" class="btn btn-light" data-toggle="modal" onclick="interactiveTour()" id="homeButton">
+            <i class="fa-solid fa-cube"></i>
+           Interactive 3D Tour Guide
+        </button>
+    
+        <button type="button" class="btn btn-light" data-toggle="modal" onclick="URtour()" id="homeButton">
+            <i class="fa-solid fa-map"></i>
+            UR Tour LAKBAY TUP-M
+        </button>
+    </div>
+    
     
     <div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.dropdown-toggle').dropdown();
+  // $('.dropdown-toggle').dropdown();
   // Resize video to fill the window
   const resizeVideo = () => {
     loadingScreen.style.display = 'none';
@@ -25,32 +25,69 @@ $(document).ready(function() {
     };
   }
 
+  // reposition search bar
+  // const searchContainer = document.querySelector('.search-container');
+  // const screenWidth = window.innerWidth;
+  // const aspectRatio = 16 / 9;
+  // const screenHeight = screenWidth / aspectRatio;
+  // const halfHeight = screenHeight / 2;
+  // var centerY = window.innerHeight / 2 - halfHeight;
+  // if (centerY < 0) {
+  //   centerY = 0
+  // }
+  // searchContainer.style.top = `${centerY}px`;
 
-    // Call the resizeVideo function on window resize
-    window.addEventListener('resize', resizeVideo);
-    window.onload = resizeVideo()
+  // watch for changes in the position of the background video and change the position of the search box accordingly
+  // const observer = new MutationObserver(callback_search_position_update);
 
-    // selector for background video element
-    const videoSelector = document.getElementById('video-selector');
+  // const observerConfig = {
+  //   attributes: true, // Watch for changes to attributes
+  //   attributeFilter: ['style'], // Specifically watch for changes to the 'style' attribute
+  //   childList: false, // Ignore changes to child nodes
+  //   characterData: false, // Ignore changes to character data
+  //   subtree: false // Ignore changes to descendants
+  // };
 
-    // Load the intro video then the looping video
-    const initialVideo = videoSelector.value;
-    const videoElement = document.getElementById('video-background');
-    // videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
-    videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
-    videoElement.type = "video/mp4"
+  // observer.observe(videoBackground, observerConfig)
+
+  // function callback_search_position_update(mutationsList) {
+  //   for (const mutation of mutationsList) {
+  //     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+  //       const computedStyle = getComputedStyle(videoBackground);
+        // const topEdgePosition = parseFloat(computedStyle.top) * videoBackground.parentElement.offsetHeight / 100;
+        // searchContainer.style.top = `${topEdgePosition}px`; 
+  //       console.log(`Div top position changed to ${newTopValue}`);
+  //     }
+  //   } 
+  // }
+
+
+  // Call the resizeVideo function on window resize
+  window.addEventListener('resize', resizeVideo);
+  window.onload = resizeVideo()
+
+  // selector for background video element
+  const videoSelector = document.getElementById('video-selector');
+
+  // Load the intro video then the looping video
+  const initialVideo = videoSelector.value;
+  const videoElement = document.getElementById('video-background');
+  // videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
+  videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
+  videoElement.type = "video/mp4"
+  videoElement.load();
+  loadingScreen.style.display = 'flex';
+  loadScreen();
+  
+  const playNextVideo = () => {
+    videoElement.src = initialVideo;
+    videoElement.loop = true;
+    videoElement.muted = true;
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
-    
-    const playNextVideo = () => {
-      videoElement.src = initialVideo;
-      videoElement.loop = true;
-      videoElement.load();
-      loadingScreen.style.display = 'flex';
-      loadScreen();
-    }
-    videoElement.addEventListener('ended', playNextVideo);
+  }
+  videoElement.addEventListener('ended', playNextVideo);
 });
 
 
@@ -94,6 +131,8 @@ const videoBackground = document.getElementById('video-background');
 const searchInput = document.getElementById('searchInput');
 const suggestionList = document.getElementById('suggestionList');
 const searchResults = document.getElementById('searchResults');
+
+
 
 // search terms for search box
 const searchTerms = [
@@ -399,11 +438,13 @@ function openFileModal() {
   var backMute = document.getElementById("video-background");
   if (backMute) {
     backMute.muted = true
+    backMute.pause()
   }
 
   // unmute when modal is hidden
   $("#fileModal").on('hide.bs.modal', function(){
     backMute.muted = false
+    backMute.play()
     minimapAppend = null
 
     // remove everything from minimap
@@ -891,7 +932,6 @@ const homemap = L.map('newMinimap', {
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(homemap);
 
 
