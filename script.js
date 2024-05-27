@@ -42,13 +42,13 @@ $(document).ready(function() {
   const buttonRow = document.getElementById('homeButtons');
 
   var centerBottom = window.innerHeight / 2 - halfHeight;
-  if (centerBottom < window.innerHeight) {
+  if (centerBottom < window.innerHeight && centerBottom > 0) {
     minimapCircle.style.bottom = `${centerBottom}px`;
     buttonRow.style.bottom = `${centerBottom}px`;
   }
   else {
-    minimapCircle.style.bottom = `10px`;
-    buttonRow.style.bottom = `10px`;
+    minimapCircle.style.bottom = `5px`;
+    buttonRow.style.bottom = `5px`;
   }
 
 
