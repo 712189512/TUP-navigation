@@ -26,40 +26,34 @@ $(document).ready(function() {
   }
 
   // reposition search bar
-  // const searchContainer = document.querySelector('.search-container');
-  // const screenWidth = window.innerWidth;
-  // const aspectRatio = 16 / 9;
-  // const screenHeight = screenWidth / aspectRatio;
-  // const halfHeight = screenHeight / 2;
-  // var centerY = window.innerHeight / 2 - halfHeight;
-  // if (centerY < 0) {
-  //   centerY = 0
-  // }
-  // searchContainer.style.top = `${centerY}px`;
+  const searchContainer = document.querySelector('.search-container');
+  const screenWidth = window.innerWidth;
+  const aspectRatio = 16 / 9;
+  const screenHeight = screenWidth / aspectRatio;
+  const halfHeight = screenHeight / 2;
+  var centerY = window.innerHeight / 2 - halfHeight;
+  if (centerY < 0) {
+    centerY = 0
+  }
+  searchContainer.style.top = `${centerY}px`;
+  
+  // reposition bottom row
+  const minimapCircle = document.getElementById('map-container');
+  const buttonRow = document.getElementById('homeButtons');
 
-  // watch for changes in the position of the background video and change the position of the search box accordingly
-  // const observer = new MutationObserver(callback_search_position_update);
+  var centerBottom = window.innerHeight / 2 - halfHeight;
+  if (centerBottom < window.innerHeight) {
+    minimapCircle.style.bottom = `${centerBottom}px`;
+    buttonRow.style.bottom = `${centerBottom}px`;
+  }
+  else {
+    minimapCircle.style.bottom = `10px`;
+    buttonRow.style.bottom = `10px`;
+  }
 
-  // const observerConfig = {
-  //   attributes: true, // Watch for changes to attributes
-  //   attributeFilter: ['style'], // Specifically watch for changes to the 'style' attribute
-  //   childList: false, // Ignore changes to child nodes
-  //   characterData: false, // Ignore changes to character data
-  //   subtree: false // Ignore changes to descendants
-  // };
 
-  // observer.observe(videoBackground, observerConfig)
 
-  // function callback_search_position_update(mutationsList) {
-  //   for (const mutation of mutationsList) {
-  //     if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-  //       const computedStyle = getComputedStyle(videoBackground);
-        // const topEdgePosition = parseFloat(computedStyle.top) * videoBackground.parentElement.offsetHeight / 100;
-        // searchContainer.style.top = `${topEdgePosition}px`; 
-  //       console.log(`Div top position changed to ${newTopValue}`);
-  //     }
-  //   } 
-  // }
+
 
 
   // Call the resizeVideo function on window resize

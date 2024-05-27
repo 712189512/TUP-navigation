@@ -149,6 +149,7 @@ body {
     
 #homeButton {
     margin-left: 10px; /* Add some spacing between buttons */
+    font-size: 10px;
 }
 
 
@@ -175,8 +176,8 @@ body {
 
 #map-container {
     position: absolute;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     margin: 10px;
     bottom: 0;
     right: 0;
@@ -245,9 +246,21 @@ body {
 }
 
 /* for mobile screens */
-@media (max-width: 767px) {
+@media (max-width: 500px) {
     #map-container {
+        position: absolute;
         height: 100px;
         width: 100px;
+        margin: 10px;
+        bottom: 0;
+        right: 0;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        border: 10px black;
+        border-radius: 50%;
+    }
+
+    #homeButton {
+        font-size: 10px;
     }
 }
