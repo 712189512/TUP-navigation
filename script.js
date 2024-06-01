@@ -42,14 +42,16 @@ $(document).ready(function() {
   const buttonRow = document.getElementById('homeButtons');
 
   var centerBottom = window.innerHeight / 2 - halfHeight;
-  if (centerBottom < window.innerHeight && centerBottom > 0) {
-    minimapCircle.style.bottom = `${centerBottom}px`;
-    buttonRow.style.bottom = `${centerBottom}px`;
+  // if (centerBottom < window.innerHeight && centerBottom > 0) {
+  if (centerBottom < 0) {
+    centerBottom = 5
   }
-  else {
-    minimapCircle.style.bottom = `5px`;
-    buttonRow.style.bottom = `5px`;
-  }
+  minimapCircle.style.bottom = `${centerBottom}px`;
+  buttonRow.style.bottom = `${centerBottom}px`;
+  
+  // minimapCircle.style.bottom = min(5);
+  // buttonRow.style.bottom = `5px`;
+  
 
 
 
@@ -223,7 +225,7 @@ const videoDropups = [
 // ]
 
 const videoPaths = [
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Tour%20Guide.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Virtual%20Tour%20With%20Voice%20Over%20(Revise)%20compressed.mp4',
   'https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4',
   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
@@ -487,6 +489,7 @@ function ARVRselect(univ) {
 
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -498,6 +501,7 @@ function ARVRselect(univ) {
 
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -509,6 +513,7 @@ function ARVRselect(univ) {
 
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -520,6 +525,7 @@ function ARVRselect(univ) {
 
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -531,6 +537,7 @@ function ARVRselect(univ) {
 
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -542,6 +549,7 @@ function ARVRselect(univ) {
 
     const videoElement = document.getElementById('video-background');
     videoElement.src = videoPaths[videoDropups.indexOf(univ)]
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -552,6 +560,7 @@ function interactiveTour() {
   const videoElement = document.getElementById('video-background');
     videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Virtual%20Tour%20Guide%20With%20Voice%20Over%20Compressed.mp4"
     // videoElement.src = "assets/3D Virtual Tour Guide With Voice Over Compressed.mp4"
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
@@ -562,6 +571,7 @@ function URtour() {
   const videoElement = document.getElementById('video-background');
     videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4"
     // videoElement.src = "assets/VIRTUAL REALITY OF LAKBAY TUP-M.mp4"
+    videoElement.muted = false
     videoElement.load();
     loadingScreen.style.display = 'flex';
     loadScreen();
