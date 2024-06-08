@@ -3,8 +3,10 @@ $(document).ready(function() {
   // Resize video to fill the window
   const resizeVideo = () => {
     loadingScreen.style.display = 'none';
-    const videoRatio = videoBackground.offsetWidth / videoBackground.offsetHeight;
+    const videoRatio = 1280 / 720;
     const windowRatio = window.innerWidth / window.innerHeight;
+
+    console.log("video ratio")
 
     if (videoRatio < windowRatio) {
       videoBackground.style.width = 'auto';
