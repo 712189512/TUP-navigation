@@ -70,8 +70,8 @@ $(document).ready(function() {
   // Load the intro video then the looping video
   const initialVideo = videoSelector.value;
   const videoElement = document.getElementById('video-background');
-  // videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
-  videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
+  videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
+  // videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
   videoElement.type = "video/mp4"
   videoElement.load();
   loadingScreen.style.display = 'flex';
@@ -153,43 +153,43 @@ const searchTerms = [
 ];
 
 // associated search paths
-// const searchPaths = [
-//   'assets\\Programs.jpg',
-//   'assets\\Admission Requirements.jpg',
-//   'assets\\Mission Vision.jpg', 
-//   'assets\\Graduate Program Offers.jpg', 
-//   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
-//   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
-//   'assets\\REGISTRAR.mp4',
-//   'assets\\CASHIER.mp4',
-//   'assets\\CAFA (1).mp4',
-//   'assets\\CIE (1).mp4',
-//   'assets\\CIT (1).mp4',
-//   'assets\\COS (1).mp4',
-//   'assets\\CLA.mp4',
-//   'assets\\COE (1).mp4',
-//   'assets\\CHAPEL.mp4',
-//   'assets\\GRAD OFFICE.mp4',
-// ]
-
 const searchPaths = [
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Programs.jpg',
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Admission%20Requirements.jpg',
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Mission%20Vision.jpg', 
-  'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Graduate%20Program%20Offers.jpg', 
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+  'assets\\Programs.jpg',
+  'assets\\Admission Requirements.jpg',
+  'assets\\Mission Vision.jpg', 
+  'assets\\Graduate Program Offers.jpg', 
+  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
+  'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
+  'assets\\CAFA.mp4',
+  'assets\\CIE.mp4',
+  'assets\\CIT.mp4',
+  'assets\\COS.mp4',
+  'assets\\CLA.mp4',
+  'assets\\COE.mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
 ]
+
+// const searchPaths = [
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Programs.jpg',
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Admission%20Requirements.jpg',
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Mission%20Vision.jpg', 
+//   'https://raw.githubusercontent.com/712189512/TUP-navigation/main/assets/Graduate%20Program%20Offers.jpg', 
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COS.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COE.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+// ]
 
 const videoDropups = [
   'Home Page',
@@ -209,39 +209,39 @@ const videoDropups = [
 ]
 
 
-// const videoPaths = [
-//   'assets\\3D Tour Guide.mp4',
-//   'assets\\VIRTUAL REALITY OF LAKBAY TUP-M.mp4',
-//   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
-//   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
-//   'assets\\REGISTRAR.mp4',
-//   'assets\\CASHIER.mp4',
-//   'assets\\CAFA (1).mp4',
-//   'assets\\CIE (1).mp4',
-//   'assets\\CIT (1).mp4',
-//   'assets\\COS (1).mp4',
-//   'assets\\CLA (1).mp4',
-//   'assets\\COE (1).mp4',
-//   'assets\\CHAPEL.mp4',
-//   'assets\\GRAD OFFICE.mp4',
-// ]
-
 const videoPaths = [
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Virtual%20Tour%20With%20Voice%20Over%20(Revise)%20compressed.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA%20(1).mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE%20(1).mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT%20(1).mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COS%20(1).mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA%20(1).mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/COE%20(1).mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+  'assets\\3D Tour Guide.mp4',
+  'assets\\VIRTUAL REALITY OF LAKBAY TUP-M.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
+  'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
+  'assets\\REGISTRAR.mp4',
+  'assets\\CASHIER.mp4',
+  'assets\\CAFA (1).mp4',
+  'assets\\CIE (1).mp4',
+  'assets\\CIT (1).mp4',
+  'assets\\COS (1).mp4',
+  'assets\\CLA (1).mp4',
+  'assets\\COE (1).mp4',
+  'assets\\CHAPEL.mp4',
+  'assets\\GRAD OFFICE.mp4',
 ]
+
+// const videoPaths = [
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Virtual%20Tour%20With%20Voice%20Over%20(Revise)%20compressed.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/REGISTRAR.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CASHIER.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CAFA%20(1).mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIE%20(1).mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CIT%20(1).mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COS%20(1).mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CLA%20(1).mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/COE%20(1).mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/CHAPEL.mp4',
+//   'https://github.com/712189512/TUP-navigation/raw/main/assets/GRAD%20OFFICE.mp4',
+// ]
 
 // const navigationPaths = [
 //   'assets\\Programs.jpg',
@@ -381,6 +381,7 @@ function sanitizeInput() {
 }
 
 var minimapAppend = null
+var intervalArray = []
 function openFileModal() {
   const selectedSearchTerm = searchInput.value;
   // const intermediate = originalsearchPaths[searchTerms.indexOf(selectedSearchTerm)]
@@ -395,6 +396,7 @@ function openFileModal() {
   if (path.includes(".mp4")) {
     newElement = document.createElement('video');
     newElement.src = path;
+    newElement.load();
     newElement.controls = true
     newElement.autoplay = true
     newElement.style.maxWidth = '65%';
@@ -444,6 +446,11 @@ function openFileModal() {
     backMute.muted = false
     backMute.play()
     minimapAppend = null
+
+    for (let index = 0; index < intervalArray.length; index++) {
+      clearInterval(intervalArray.pop())
+    }
+    intervalArray = []
 
     // remove everything from minimap
     miniMap.eachLayer(function (layer) {
@@ -591,11 +598,12 @@ const cafa = [14.58786,120.98471]
 const cit = [14.58737,120.98491]
 const admin = [14.58658,120.98443]
 const cie = [14.58781,120.98434]
-const cos = [14.58716,120.98385]
-const cla = [14.58756,120.98413]
+const cos = [14.58711,120.98380]
+const cla = [14.58734,120.98397]
 const coe = [14.58635,120.98423]
 const chapel = [14.58770,120.98445]
 const gradoffice = [14.58669,120.98395]
+const registrar = [14.58752,120.98411]
 
 // bounding box in case we somehow move the map (it shouldnt)
 const corner1 = L.latLng(14.58969,120.98683)
@@ -817,6 +825,9 @@ var marker8 = L.marker(chapel)
 var marker9 = L.marker(gradoffice)
         .addTo(map)
         .bindPopup('<b>Ripalda Hall</b><br />Grad Office')
+var marker10 = L.marker(registrar)
+        .addTo(map)
+        .bindPopup('<b>COS/CLA Building</b><br />Registrar')
 
 // polygon is drawn by:
 //	1st array: shaded area
@@ -921,6 +932,14 @@ marker9.on('click', () => {
   openFileModal()
 })
 
+marker10.on('mouseover', () => {marker10.openPopup()})
+marker10.on('mouseout', () => {marker10.closePopup()})
+marker10.on('click', () => {
+  searchInput.value = "REGISTRAR"
+  $('#mapModal').modal('hide');
+  openFileModal()
+})
+
 // another minimap for the home screen
 const homemap = L.map('newMinimap', {
   center: center,
@@ -939,10 +958,6 @@ const homemap = L.map('newMinimap', {
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
 }).addTo(homemap);
-
-
-
-
 
 
 // Create a new map container for the minimap
@@ -972,6 +987,7 @@ function initializeMinimap() {
 var miniMap = initializeMinimap()
 
 var interval = []
+var mappedIntervals = []
 function minimap(destination) {
     if (destination === 'CIE') {
       var package = [
@@ -986,7 +1002,10 @@ function minimap(destination) {
         [
           CIEpoly
         ],
-        [2500, 1333, 4875, 4292] // interval between points
+        // 7:04, 9:22, 12:00, 25:00, 38:00
+        // 7133, 9733, 12000, 25000, 38000
+        // [2500, 1333, 4875, 4292] // interval between points
+        [9733, 2267, 13000, 13000] // interval between points
       ]
     }
     else if (destination === 'COS') {
@@ -1001,10 +1020,11 @@ function minimap(destination) {
         [
           COSCLApoly
         ],
-        [3250, 833, 4333, 2792]
+        [9262, 2375, 12349, 7955]
       ]
     }
     else if (destination === 'CAFA') {
+      mappedIntervals = [3250, 833, 4333, 4042, 7833].map(interval => interval * 2.85)
       var package = [
         [
           start,
@@ -1022,10 +1042,13 @@ function minimap(destination) {
         // [ 2150, 6080, 3950, 2000, 6030, ]
         // 8833, 10875, 20708
         // 2042, 9833
-        [3250, 833, 4333, 2042, 9833]
+        // [3250, 833, 4333, 2042, 9833]
+        // 6:28
+        mappedIntervals
       ]
     }
     else if (destination === 'CIT') {
+      mappedIntervals = [3250, 833, 4333, 3300, 3117, 3250].map(interval => interval * 3)
       var package = [
         [
           start,
@@ -1041,10 +1064,12 @@ function minimap(destination) {
         ],
         //          8:20  12:13 15:23 19:05
         //          8833  12541 15958 19208
-        [3250, 833, 4333, 3000, 3417, 3250]
+        // [3250, 833, 4333, 3000, 3417, 3250]
+        mappedIntervals
       ]
     }
     else if (destination === 'CLA') {
+      mappedIntervals = [1000, 3000, 2800].map(interval => interval * 3)
       var package = [
         [
           entrance,
@@ -1056,7 +1081,8 @@ function minimap(destination) {
           COSCLApoly
         ],
         //     3500  6000
-        [1000, 2500, 4000]
+        // [1000, 2500, 4000]
+        mappedIntervals
       ]
     }
     else if (destination === 'REGISTRAR') {
@@ -1073,10 +1099,12 @@ function minimap(destination) {
         ],
         //1:0  3:0   6:12  12:0
         //1000 3000  6500 12000
-        [1000, 2000, 4500, 6000]
+        // [1000, 2000, 4500, 6000]
+        [2000, 6000, 8000, 16000]
       ]
     }
     else if (destination === 'CASHIER') {
+      mappedIntervals = [3250, 833, 4333, 3000, 3417, 3250, 2500, 2000].map(interval => interval * 2.95)
       var package = [
         [
           start,
@@ -1094,10 +1122,12 @@ function minimap(destination) {
         ],
         //          8:20             19:05 20:12 23:06
         //          8833             17500 20500 23250
-        [3250, 833, 4333, 3000, 3417, 3250, 2500, 2000]
+        // [3250, 833, 4333, 3000, 3417, 3250, 2500, 2000]
+        mappedIntervals
       ]
     }
     else if (destination === 'COE') {
+      mappedIntervals = [3250, 833, 4333, 3000, 3417, 3250, 2500, 3500, 4000].map(interval => interval * 2.87)
       var package = [
         [
           start,
@@ -1116,10 +1146,12 @@ function minimap(destination) {
         ],
         //          8:20             19:05 20:12 24:00 28:00
         //          8833             17500 20500 24000 28000
-        [3250, 833, 4333, 3000, 3417, 3250, 2500, 3500, 4000]
+        // [3250, 833, 4333, 3000, 3417, 3250, 2500, 3500, 4000]
+        mappedIntervals
       ]
     }
     else if (destination === 'CHAPEL') {
+      mappedIntervals = [3250, 833, 4333, 3000, 3417, 2000].map(interval => interval * 2.91)
       var package = [
         [
           start,
@@ -1135,10 +1167,12 @@ function minimap(destination) {
         ],
         //          8:20  12:13 15:23 19:05
         //          8833  12541 15958 19208
-        [3250, 833, 4333, 3000, 3417, 2000]
+        // [3250, 833, 4333, 3000, 3417, 2000]
+        mappedIntervals
       ]
     }
     else if (destination === 'GRAD OFFICE') {
+      mappedIntervals = [1000, 2500, 3800, 900].map(interval => interval * 3)
       var package = [
         [
           entrance,
@@ -1151,10 +1185,12 @@ function minimap(destination) {
           GRADOFFICEpoly
         ],
         //     3500  6000
-        [1000, 2500, 3800, 900]
+        // [1000, 2500, 3800, 900]
+        mappedIntervals
       ]
     }
     else if (destination === 'ENROLLMENT TOUR GUIDE FOR FRESHMEN') {
+      mappedIntervals = [10500, 4000, 5750, 5750, 3500, 2000, 1000, 3000, 1000].map(interval => interval * 2.5)
       var package = [
         [
           start, 
@@ -1175,10 +1211,12 @@ function minimap(destination) {
         //10:12  14:12   26:0  29:12  31:12  32:12
         //10500  14500  26000  29500  31500  32500 35500 36500
         // [ 10500,  4000, 11500,  3500,  2000, 1000,  3000, 1000]
-        [ 10500,  4000, 5750, 5750,  3500,  2000, 1000,  3000, 1000]
+        // [ 10500,  4000, 5750, 5750,  3500,  2000, 1000,  3000, 1000]
+        mappedIntervals
       ]
     }
     else if (destination === 'ENROLLMENT TOUR GUIDE FOR MASTERAL') {
+      mappedIntervals = [2208, 2792,  9708,  1500, 2708, 2292, 1000].map(interval => interval * 2.875)
       var package = [
         [
           start,
@@ -1196,7 +1234,8 @@ function minimap(destination) {
         ],
         //      5:0   12:12   16:0 19:17  23:0
         //      5000  12500  16000 19708 23000
-         [2208, 2792,  9708,  1500, 2708, 2292, 1000]
+        //  [2208, 2792,  9708,  1500, 2708, 2292, 1000]
+        mappedIntervals
       ]
     }
 
@@ -1249,6 +1288,7 @@ function createMiniMap(data) {
             delete marker
           }
         }, 1);
+        intervalArray.push(interval)
       }
     });
     
