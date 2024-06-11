@@ -210,7 +210,7 @@ const videoDropups = [
 
 
 // const videoPaths = [
-//   'assets\\3D Tour Guide.mp4',
+//   'assets\\GATE 4 to GATE 2 Walkthrough-COMPRESSED',
 //   'assets\\VIRTUAL REALITY OF LAKBAY TUP-M.mp4',
 //   'assets\\ENROLLMENT TOUR GUIDE FOR FRESHMEN.mp4',
 //   'assets\\ENROLLMENT TOUR GUIDE FOR MASTERAL.mp4',
@@ -227,7 +227,7 @@ const videoDropups = [
 // ]
 
 const videoPaths = [
-  'https://github.com/712189512/TUP-navigation/raw/main/assets/3D%20Virtual%20Tour%20With%20Voice%20Over%20(Revise)%20compressed.mp4',
+  'https://github.com/712189512/TUP-navigation/raw/main/assets/GATE%204%20to%20GATE%202%20Walkthrough-COMPRESSED.mp4',
   'https://github.com/712189512/TUP-navigation/raw/main/assets/VIRTUAL%20REALITY%20OF%20LAKBAY%20TUP-M.mp4',
   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20FRESHMEN.mp4',
   'https://github.com/712189512/TUP-navigation/raw/main/assets/ENROLLMENT%20TOUR%20GUIDE%20FOR%20MASTERAL.mp4',
