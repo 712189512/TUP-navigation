@@ -70,8 +70,8 @@ $(document).ready(function() {
   // Load the intro video then the looping video
   const initialVideo = videoSelector.value;
   const videoElement = document.getElementById('video-background');
-  videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
-  // videoElement.src = "https://github.com/712189512/TUP-navigation/raw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
+  // videoElement.src = "assets\\INTRO AREAL VIEW0034-0150.mp4";
+  videoElement.src = "https://github.com/712189512/TUP-navigation/sraw/main/assets/INTRO%20AREAL%20VIEW0034-0150.mp4";
   videoElement.type = "video/mp4"
   videoElement.load();
   loadingScreen.style.display = 'flex';
